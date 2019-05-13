@@ -1,19 +1,21 @@
-# Tyne & Wear Public Transport Users Group website redesign, Phase 2 
-- Implements the inclusion of interactive route maps, map markers, etc using Google Maps API.
+# Tyneside Hospital Route Finder App 
 
 ## Introduction
 
-This project implements a slimmed-down version of the 'Tyne & Wear Public Transport Users Group' website prototype (click [here](https://github.com/kevald1963/milestone-1-twptug-redesign/) to view the FULL site implemented, so far, on GitHub). The reason for developing an interactive front-end within a cut-down version of the website is to avoid presenting the course assessor with a busy and over-cluttered project. The changes implemented in this project have also been merged into the FULL site, as referenced above.
+This project finds and displays interactive routes maps between main population areas and local hospitals in the Tyne & Wear, England, UK, for various modes of transport using Google Maps. Public transport timetable information is also provided, in text format, to accompany the visual map routes, when this mode of transport is selected. It also provides the facility to display map markers for various points of interest such as Metro stations, bus stations, Ferry terminals and hospitals.
 
 ### Aims For This Release
 
-The aim of the update to the website is to provide a travel information service to people in the borough of South Tyneside who wish to travel from the major towns to the two hospitals that now serve the borough. public transport
+The aims of the release are:
+- to provide visual route information to people in Tyneside wishing to travel from it major population areas to any of the hospitals that serve the county.
+- separately display Metro, train, ferry and bus stations using markers, with clustering of markers where appropriate.
+- provide timetable information in text format corresponding to public transport services on any routes displayed.
 
 ## UX
  
 ### Website Audience
 
-This consists of public transport users, local group activists, Management Committee members, partner organisations, Media organisations, other UK community transport organisations, Nexus officials, and local councillors.
+This consists of public transport users, cyclists, pedestrians and drivers wishing to travel to and from hospitals in and around Tyne & Wear.
 
 ### User Stories
 
@@ -21,7 +23,7 @@ User stories to be catered for in this release:
 
 ### Layouts
 
-The files shown below are stored in the __Project Documentation_ folder in the GitHub repository. The layout diagrams show both wide screen and mobile layouts. I drew out the Home page layout first, but I didn't stick to it as it didn't look right on the page. The later pages reflect the new design. Even then, I haven't followed the later designs to the letter, but repositioned elements according to what looked right in practice.
+The files shown below are stored in the __Project Documentation_ folder in the GitHub repository. The layout diagrams show both wide screen and mobile layouts.
 
 - South Tyneside local group page layouts.jpg
 - Google Map page layouts.jpg
