@@ -1,10 +1,138 @@
-// Create the map object variable in the global scope so it’s easier to interact with later.
+// Global scope objects
 var map;
+var lat;
+var lng;
+
+var myDepartureObj, myDestinationObj, i, j, k, htmlText = "", departurePointName = "", departureAreaCenter = "";
+
+
+// Local objects:
+// ==============
+// Object naming convention: Note that array names are plural, while item names within an array are singular, unless numeric.
+
+// This object holds journey departure data as follows:
+// 1. Name and co-ordinates for the approximate geographical centre of each departure area i.e. of the selected borough.
+// 2. Name and co-ordinates for the major departure points within each selected departure area.
+myDepartureObj = {
+    "areaCenters": [
+        {
+            "area":"Newcastle",
+            "latlng":[54.984429, -1.618050],
+            "departurePoints": [
+                {
+                    "departurePointName":"Eldon Square Bus Station",
+                    "latlng":[54.973473, -1.518303]
+                },
+                {
+                    "departurePointName":"Monument Metro Station",
+                    "latlng":[54.973473, -1.518303]
+                },
+            ]
+        },
+        {
+            "area":"North Tyneside",
+            "latlng":[55.028626, -1.521937],
+            "departurePoints": [
+                {
+                    "departurePointName":"Wallsend Forum",
+                    "latlng":[54.973473, -1.518303]
+                },
+                {
+                    "departurePointName":"Tynemouth Metro Station",
+                    "latlng":[54.973473, -1.518303]
+                },
+            ]
+        },
+        {
+            "area":"Gateshead",
+            "latlng":[54.936093, -1.676706],
+            "departurePoints": [
+                {
+                    "departurePointName":"Gateshead Interchange",
+                    "latlng":[54.973473, -1.518303]
+                },
+                {
+                    "departurePointName":"Gateshead Metro Centre",
+                    "latlng":[54.973473, -1.518303]
+                },
+                {
+                    "departurePointName":"Blaydon Bus Station",
+                    "latlng":[54.973473, -1.518303]
+                },
+            ]
+        },
+        {
+            "area":"South Tyneside", 
+            "latlng":[54.967314, -1.437396],
+            "departurePoints": [
+                {
+                    "departurePointName":"Hebburn Centre",
+                    "latlng":[54.973473, -1.518303]
+                },
+                {
+                    "departurePointName":"Jarrow Bus Station",
+                    "latlng":[54.979757, -1.491899]
+                },
+                {
+                    "departurePointName":"South Shields Bus Station",
+                    "latlng":[54.998236, -1.433126]
+                }
+            ]
+        },
+        {
+            "area":"Sunderland",
+            "latlng":[54.879431, -1.430500],
+            "departurePoints": [
+                {
+                    "departurePointName":"Sunderland Park Lane Interchange",
+                    "latlng":[54.973473, -1.518303]
+                },
+            ]
+        }
+    ]
+};
+
+// This object holds destination hospital data as follows:
+// 1. Area, name and co-ordinates for the destination hospital.
+myDestinationObj = {
+    "destinationHospitals": [
+        {
+            "area":"Newcastle",
+            "hospital":"Newcastle RVI",
+            "latlng":[54.984429, -1.618050]
+        },
+        {
+            "area":"Newcastle",
+            "hospital":"Newcastle Freeman",
+            "latlng":[54.984429, -1.618050]
+        },
+        {
+            "area":"North Tyneside",
+            "hospital":"Rake Lane",
+            "latlng":[54.984429, -1.618050]
+        },
+        {
+            "area":"Gateshead",
+            "hospital":"Queen Elizabeth",
+            "latlng":[54.984429, -1.618050]
+        },
+        {
+            "area":"South Tyneside", 
+            "hospital":"South Tyneside District",
+            "latlng":[54.984429, -1.618050]
+        },
+        {
+            "area":"Sunderland",
+            "hospital":"Sunderland Royal",
+            "latlng":[54.984429, -1.618050]
+        }
+    ]
+};
 
 document.addEventListener('DOMContentLoaded', function () {
     
-    if (document.querySelectorAll('#map').length > 0) {
-        // Use the language specified in the HTML tag. If none set then default to English.
+    if (document.querySelectorAll('#map-canvas').length > 0) {
+        // Use the language specified in the HTML tag. If none, set the default to English.
         if (document.querySelector('html').lang) {
             lang = document.querySelector('html').lang;
         } else {
@@ -23,19 +151,207 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function initMap() {
 
+    var result;
+
     var directionsDisplay = new google.maps.DirectionsRenderer;
     var directionsService = new google.maps.DirectionsService;
-
-    map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
-        center: {lat: 54.967314, lng: -1.437396}  // Initially centre map on centre of South Tyneside borough.
-    });
+    
+    htmlText = "";
+    
     directionsDisplay.setMap(map);
+
+    // Display the appropriate borough map depending on which departure area was selected from the main menu.
+    $("#departure-area li a").click(function() {
+
+        // Get the departure area name from the selected menu item.
+        var departureArea = $(this).attr("name");
+
+        console.log("departureArea 1 = " + departureArea);
+        
+        // Set the area heading for the Route Planner panel.
+        htmlText = "<h2>" + departureArea + "</h2>";
+        document.getElementById("area-name").innerHTML = htmlText;
+
+        // Call function to display departure area Google map and associated controls.
+        // console.log("Call function getAreaCentre");
+        result = getAreaCentre(departureArea);
+
+        // Hide initial elements. 
+        $("#county-map").hide();
+        $(".initial-introduction").hide();
+
+        // Show elements relevant to the departure area.
+        $("#map-canvas").show();
+        $("#route-planner").show();
+
+    });
 
     // Compute and display the route between the selected departure towns and hospitals for the provided travel mode.
     document.getElementById("submit-button").addEventListener("click", function() {
         calculateAndDisplayRoute(directionsService, directionsDisplay);
     });
+};
+
+function getAreaCentre(departureArea) {
+
+/*
+    var myDepartureObj, myDestinationObj, i, j, k, htmlText = "", departurePointName = "";
+
+    // Object naming convention: Note that array names are plural, while item names within an array are singular, unless numeric.
+    
+    // JSON object holds journey departure data as follows:
+    // 1. Name and co-ordinates for the approximate geographical centre of each departure area i.e. of the selected borough.
+    // 2. Name and co-ordinates for the major departure points within each selected departure area.
+    myDepartureObj = {
+        "areaCenters": [
+            {
+                "area":"Newcastle",
+                "latlng":[54.984429, -1.618050],
+                "departurePoints": [
+                    {
+                        "departurePointName":"Eldon Square Bus Station",
+                        "latlng":[54.973473, -1.518303]
+                    },
+                    {
+                        "departurePointName":"Monument Metro Station",
+                        "latlng":[54.973473, -1.518303]
+                    },
+                ]
+            },
+            {
+                "area":"North Tyneside",
+                "latlng":[55.028626, -1.521937],
+                "departurePoints": [
+                    {
+                        "departurePointName":"Wallsend Forum",
+                        "latlng":[54.973473, -1.518303]
+                    },
+                    {
+                        "departurePointName":"Tynemouth Metro Station",
+                        "latlng":[54.973473, -1.518303]
+                    },
+                ]
+            },
+            {
+                "area":"Gateshead",
+                "latlng":[54.936093, -1.676706],
+                "departurePoints": [
+                    {
+                        "departurePointName":"Gateshead Interchange",
+                        "latlng":[54.973473, -1.518303]
+                    },
+                    {
+                        "departurePointName":"Gateshead Metro Centre",
+                        "latlng":[54.973473, -1.518303]
+                    },
+                    {
+                        "departurePointName":"Blaydon Bus Station",
+                        "latlng":[54.973473, -1.518303]
+                    },
+                ]
+            },
+            {
+                "area":"South Tyneside", 
+                "latlng":[54.967314, -1.437396],
+                "departurePoints": [
+                    {
+                        "departurePointName":"Hebburn Centre",
+                        "latlng":[54.973473, -1.518303]
+                    },
+                    {
+                        "departurePointName":"Jarrow Bus Station",
+                        "latlng":[54.979757, -1.491899]
+                    },
+                    {
+                        "departurePointName":"South Shields Bus Station",
+                        "latlng":[54.998236, -1.433126]
+                    }
+                ]
+            },
+            {
+                "area":"Sunderland",
+                "latlng":[54.879431, -1.430500],
+                "departurePoints": [
+                    {
+                        "departurePointName":"Sunderland Park Lane Interchange",
+                        "latlng":[54.973473, -1.518303]
+                    },
+                ]
+            }
+        ]
+    };
+
+    // JSON object holds destination hospital data as follows:
+    // 1. Area, name and co-ordinates for the destination hospital.
+    myDestinationObj = {
+        "destinationHospitals": [
+            {
+                "area":"Newcastle",
+                "hospital":"Newcastle RVI",
+                "latlng":[54.984429, -1.618050]
+            },
+            {
+                "area":"Newcastle",
+                "hospital":"Newcastle Freeman",
+                "latlng":[54.984429, -1.618050]
+            },
+            {
+                "area":"North Tyneside",
+                "hospital":"Rake Lane",
+                "latlng":[54.984429, -1.618050]
+            },
+            {
+                "area":"Gateshead",
+                "hospital":"Queen Elizabeth",
+                "latlng":[54.984429, -1.618050]
+            },
+            {
+                "area":"South Tyneside", 
+                "hospital":"South Tyneside District",
+                "latlng":[54.984429, -1.618050]
+            },
+            {
+                "area":"Sunderland",
+                "hospital":"Sunderland Royal",
+                "latlng":[54.984429, -1.618050]
+            }
+        ]
+    };
+*/    
+
+    for (i in myDepartureObj.areaCenters) {
+        // If area selected in menu matches value in object then get the corresponding
+        // latitude and longtitude values to centre the Google map.
+        if (departureArea == myDepartureObj.areaCenters[i].area) {
+            lat = myDepartureObj.areaCenters[i].latlng[0];
+            lng = myDepartureObj.areaCenters[i].latlng[1];
+
+            // console.log("lat = " + lat);
+            // console.log("lng = " + lng);
+
+            departureAreaCenter = new google.maps.LatLng(lat, lng);
+            map = new google.maps.Map(document.getElementById("map-canvas"), {
+                zoom: 12,
+                center: departureAreaCenter
+            });        
+
+            // Populate the departure point dropdown list.
+            for (j in myDepartureObj.areaCenters[i].departurePoints) {
+                htmlText += "<option>" + myDepartureObj.areaCenters[i].departurePoints[j].departurePointName + "</option>"; 
+            };
+
+            document.getElementById("departurePointList").innerHTML = htmlText; 
+
+            // Populate the destination hospital dropdown list.
+            htmlText = "";
+            for (k in myDestinationObj.destinationHospitals) {
+                htmlText += "<option>" + myDestinationObj.destinationHospitals[k].hospital + "</option>"; 
+            };
+
+            document.getElementById("destinationHospitalList").innerHTML = htmlText; 
+            return;
+        };
+    };
 };
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
@@ -44,11 +360,11 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     var journeyEnd;
     var journeyMode;
     
-    var departureTown = document.getElementById("departureTown").value;                 // Get the string identifying the departure town.
-    console.log("departureTown = " + departureTown);
+    var departurePoint = document.getElementById("departure-point").value;                 // Get the string identifying the departure point.
+    console.log("departure point = " + departurePoint);
     
-    // Set co-ordinates for departure town.
-    switch (departureTown)             // Pass the departure town name to the switch condition.
+    // Set co-ordinates for departure point.
+    switch (departurePoint)
     {
         case "hebburnCentre":
             journeyStart = new google.maps.LatLng(54.973473, -1.518303);
@@ -63,11 +379,11 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
             break;
     
         default:
-            console.log("Error: Unknown departure town.");
+            console.log("Error: Unknown departure point.");
             break;
     };
 
-    var destinationHospital = document.getElementById("destinationHospital").value;     // Get the string identifying the destination hospital.
+    var destinationHospital = document.getElementById("destination-hospital").value;     // Get the string identifying the destination hospital.
     console.log("destinationHospital = " + destinationHospital);
 
     // Set co-ordinates for destination hospitals.
@@ -107,6 +423,22 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 };
 
 /* KEEP STUFF BELOW - HAS CODE FOR MARKERS.
+
+/* Map centering on a marker.
+
+Everytime you add a new marker:
+
+loc = new google.maps.LatLng(marker.position.lat(), marker.position.lng());
+bounds.extend(loc);
+
+After all markers have been added:
+
+map.fitBounds(bounds);       # auto-zoom
+map.panToBounds(bounds);     # auto-center
+
+*/
+
+/*
 var map;
 
 function initMap() {

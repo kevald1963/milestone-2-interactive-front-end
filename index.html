@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>South Tyneside Hospital Routes</title>
+    <title>Tyneside Hospital Route Finder</title>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,20 +16,12 @@
 <body>
 
     <!-- HEADER -->
-    <div class="container-fluid alert-container">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="test-only-alert alert alert-warning">
-                    <strong>Please note this is a test site only.</strong> Click <a class="live-link" href="http://www.twptug.org.uk/" target="_blank"><strong>here</strong></a> for TWPTUG's live website.
-                </div>
-            </div>
-        </div>
-    </div>
-
     <header class="container-fluid">
         <div class="row">
-            <div class="col-md-12 page-title">
-                <h1>South Tyneside Hospital Routes</h1>
+            <div class="col-md-12">
+                <div class="page-title">
+                    <h2>Tyneside Hospital Route Finder</h2>
+                </div>    
             </div>
         </div>
     </header>
@@ -52,85 +44,30 @@
                 <ul class="nav navbar-nav">
 
                     <!-- HOME -->
-                    <li><a href="index.html"><i class="fa fa-home hidden-xs" aria-hidden="true"></i><span> Home</span><span class="sr-only">(current)</span></a></li>
+                    <li><a href="index.html"><i class="fa fa-home hidden-xs" aria-hidden="true"></i><span>Home</span><span class="sr-only">(current)</span></a></li>
 
-                    <!-- GROUPS -->
+                    <!-- DEPARTURE AREAS -->
                     <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-users hidden-xs" aria-hidden="true"></i>
-                            <span> Groups</span>
+                            <span>Your Departure Area</span>
                             <span class="caret"></span>
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="newcastle.html">Newcastle</a></li>
-                            <li><a href="northtyneside.html">North Tyneside</a></li>
-                            <li><a href="gateshead.html">Gateshead</a></li>
-                            <li><a href="southtyneside.html">South Tyneside</a></li>
-                            <li><a href="sunderland.html">Sunderland</a></li>
+                        <ul id="departure-area" class="dropdown-menu">
+                            <li><a name="Newcastle">Newcastle</a></li>
+                            <li><a name="North Tyneside">North Tyneside</a></li>
+                            <li><a name="Gateshead">Gateshead</a></li>
+                            <li><a name="South Tyneside">South Tyneside</a></li>
+                            <li><a name="Sunderland">Sunderland</a></li>
                         </ul>
-                    </li>
 
-                    <!-- BUS -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-bus hidden-xs" aria-hidden="true"></i>
-                            <span> Bus</span>
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="busfacts.html">Bus Facts</a></li>
-                            <li><a href="reregulation.html"><span>Re-regulation</span></a></li>
-                            <li><a href="hospitalbuses.html"><span>Hospital Buses</span></a></li>
-                        </ul>
-                    </li>
+                    <!-- MARKERS -->
+                    <li><a href="#">Markers</a></li>
 
-                    <!-- CYCLING -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-bicycle hidden-xs" aria-hidden="true"></i>
-                            <span> Cycling</span>
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="cyclingcampaigns.html">Campaigns</a></li>
-                            <li class="divider" role="separator" ></li>
-                            <li><a href="https://newcycling.org" target="_blank"><span><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> NewCycling Group</span></a></li>
-                            <li><a href="https://www.sustrans.org.uk" target="_blank"><span><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Sustrans</span></a></li>
-                        </ul>
-                    </li>
-
-                    <!-- RAIL -->
-                    <li><a href="rail.html"><i class="fa fa-train hidden-xs" aria-hidden="true"></i><span> Rail</span></a></li>
-
-                    <!-- CALENDAR -->
-                    <li><a href="calendar.html"><i class="fa fa-calendar hidden-xs" aria-hidden="true"></i><span> Calendar</span></a></li>
-
-                    <!-- MORE -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <span>More</span>
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="pensioners.html"><span>Pensioners' Travel</span></a></li>
-                            <li><a href="disability.html"><span>Disability</span></a></li>
-                            <li><a href="airpollution.html"><span>Air Pollution</span></a></li>
-                            <li><a href="transpcomm.html"><span>Transport Select Committee</span></a></li>
-                            <li><a href="media.html"><span>Media</span></a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="http://www.passengertransport.co.uk" target="_blank"><span><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Passenger Transport Magazine</span></a></li>
-                            <li><a href="https://www.transportfocus.org.uk/news-events-media/news" target="_blank"><span><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Transport Focus News</span></a></li>
-                            <li><a href="https://bettertransport.org.uk" target="_blank"><span><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Campaign for Better Transport</span></a></li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <!-- ABOUT -->
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="blog.html">Blog</a></li>
+                    <!-- ABOUT -->
                     <li><a href="about.html">About</a></li>
-                </ul>
 
+                </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -141,43 +78,81 @@
     <main class="container-fluid">
         <section>
             <div class="row">
+                <!-- 
+                Note a map image is shown initially but is toggled programmatically with an interactive Google map showing the 
+                departure area, once the area has been selected. A 'departure area' is one of the five Tyne & Wear boroughs.
+                Note that the Google Maps API doesn't currently (as of 05/2019) have any means available to show county boundaries.
+                For this reason, an image of the county of Tyne & Wear, with boundaries, is shown initially.
+                -->
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                    <div id="map" style="width:100%; height:500px;"></div>
+                    <!-- Display Google map image of Tyne & Wear with boundaries. -->
+                    <div id="county-map">
+                        <img class="county-map-image" src="assets/images/tyne_and_wear_map.jpg" alt="Google Maps image of Tyne and Wear showing county boundaries.">
+                    </div>
+                    <!-- Display Interactive Google map of departure area. -->
+                    <div id="map-canvas"></div>
                 </div>
+
+                <!-- Control panel. -->
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <div class="route-planner">    
-                        <form action="#">
-                            <p>
-                                To show a route on the map, please select a departure town, a destination hospital and a mode of travel 
-                                from the dropdown lists below, and then click the Submit button.
-                            </p>
+                    
+                    <div class="initial-introduction">
+                        <!-- This text shown on page initialisation using jQuery. Hidden when departure area selected. -->
+                        <h2 class="intro-route-finder">Using the hospital route finder</h2>
+                        <p> To show a route on the map, first select an area from which you want to depart 
+                            from the menu above.</p>
+                    </div>
+
+                    <!-- This whole division is hidden on page initialisation using jQuery. Shown when departure area selected. -->
+                    <div id="route-planner">
+                        <form>
                             <div class="row">
+                                <!-- AREA NAME & USER INSTRUCTIONS -->
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <strong>Departure Town:</strong>
-                                    <select id="departureTown">
-                                        <option value="hebburnCentre">Hebburn Centre</option>
-                                        <option value="jarrowBusStation">Jarrow Bus Station</option>
-                                        <option value="southShieldsBusStation">South Shields BusStation</option>
-                                    </select>
+                                    <div id="area-name">
+                                        <!-- Name of selected departure area is injected here by JavaScript as an <h2> element. -->
+                                    </div>
+                                    <p> Please select a departure point, a destination hospital and a travel mode 
+                                        below, then click Submit to display the route.
+                                    </p>
                                 </div>
+                                
+                                <!-- DEPARTURE POINT DROPDOWN -->
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <strong>Destination Hospital:</strong>
-                                    <select id="destinationHospital">
-                                        <option value="southTynesideDistrictHospital">South Tyneside</option>
-                                        <option value="sunderlandRoyalHospital">Sunderland Royal</option>
-                                    </select>
+                                    <div id="departure-point">
+                                        <strong>Departure Point:</strong>
+                                        <select id="departurePointList">
+                                            <!-- List of departure points is injected here by JavaScript as multiple <option> elements. -->
+                                        </select>
+                                    </div>
                                 </div>
+                                
+                                <!-- DESTINATION HOSPITAL DROPDOWN -->
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <strong>Mode of Travel:</strong>
-                                    <select id="travelMode">
-                                        <option value="TRANSIT">Public Transport</option>
-                                        <option value="WALKING">Walking</option>
-                                        <option value="BICYCLING">Cycling</option>
-                                        <option value="DRIVING">Driving</option>
-                                    </select>
+                                    <div id="destination-hospital">
+                                        <strong>Destination Hospital:</strong>
+                                        <select id="destinationHospitalList">
+                                            <!-- List of destination-hospitals is injected here by JavaScript as multiple <option> elements. -->
+                                        </select>
+                                    </div>    
                                 </div>
+                                
+                                <!-- TRAVEL MODE DROPDOWN -->
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <button class="btn btn-default btn-success" id="submit-button" type="submit">Submit</button>
+                                    <div id="travel-mode">
+                                        <strong>Travel Mode:</strong>
+                                        <select>
+                                            <option value="TRANSIT">Public Transport</option>
+                                            <option value="WALKING">Walking</option>
+                                            <option value="BICYCLING">Cycling</option>
+                                            <option value="DRIVING">Driving</option>
+                                        </select>
+                                    </div>    
+                                </div>
+                                
+                                <!-- ROUTE SUBMIT BUTTON -->
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <button id="submit-button" class="btn btn-default btn-success" type="submit">Submit</button>
                                 </div>
                             </div>    
                         </form>
@@ -188,123 +163,13 @@
     </main>
     <!-- /.MAIN -->
 
-    <!-- FOOTER -->
-    <footer class="container-fluid">
-        <!-- Split Footer into 3 columns -->
-        <div class="row">
-
-            <!-- ABOUT -->
-            <div class="col-xs-12 col-sm-12 col-md-4">
-                <h5 class="uppercase footer">About</h5>
-                <p class="inline-block">
-                    TWPTUG campaigns for an integrated, publicly-accountable transport system connecting Tyne and Wear, Northumberland and County Durham.
-                </p>
-            </div>
-
-            <!-- CONTACT -->
-            <div class="col-md-4">
-                <h5 class="uppercase footer">Email us</h5>
-                <p class="inline-block">
-                    Any questions about TWPTUG or want to report a website issue?<br>
-                    Email us here.<a href="" class="email-link" data-toggle="modal" data-target="#emailModalTWPTUG"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-                </p>
-            </div>
-
-            <!-- SOCIAL MEDIA -->
-            <div class="col-md-4">
-                <h5 class="uppercase footer">Social Media</h5>
-                <!-- 'list-inline' is a Bootstrap class. -->
-                <ul class="list-inline social-media">
-                    <li><a target="_blank" href="https://www.facebook.com/twptug/"><i class="fa fa-facebook"></i></a></li>
-                    <li><a target="_blank" href="https://twitter.com/twptug"><i class="fa fa-twitter"></i></a></li>
-                    <!-- Leave these here in case they are needed in the future:
-                    <li><a target="_blank" href="#"><i class="fa fa-pinterest"></i></a></li>
-                    <li><a target="_blank" href="#"><i class="fa fa-youtube"></i></a></li>
-                    -->
-                </ul>
-            </div>
-        </div>
-
-    </footer>
-    <!-- /.FOOTER -->
-    
-    <!-- MODAL EMAIL FORM (TO: TWPTUG SECRETARY) -->
-    <div class="modal fade" id="emailModalTWPTUG" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Email Us</h4>
-                </div>
-                <div class="modal-body">
-                    <form action="acknowledgement.html">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="email" placeholder="To: TWPTUG Secretary" disabled>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="email" placeholder="Your email address" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="email-confirm" placeholder="Email address confirmation" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="subject" placeholder="Subject for your message" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="message" rows="5" cols="20" class="form-control" id="message" placeholder="Your message" required></textarea>
-                        </div>
-                        <button type="reset" class="btn btn-warning">Clear</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success">Submit</button></a>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /.MODAL EMAIL FORM (TO: TWPTUG SECRETARY) -->
-
-    <!-- MODAL EMAIL FORM (TO: LOCAL GROUP SECRETARY) -->
-    <div class="modal fade" id="emailModalGateshead" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Email Us</h4>
-                </div>
-                <div class="modal-body">
-                    <form action="acknowledgement.html">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="email" placeholder="To: Gateshead Secretary" disabled>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="email" placeholder="Your email address" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="email-confirm" placeholder="Email address confirmation" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="subject" placeholder="Subject for your message" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="message" rows="5" cols="20" class="form-control" id="message" placeholder="Your message" required></textarea>
-                        </div>
-                        <button type="reset" class="btn btn-warning">Clear</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success">Submit</button></a>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /.MODAL EMAIL FORM (TO: LOCAL GROUP SECRETARY) -->
-
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <!-- Google Maps JS code -->
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7rsJmO1wCdSzGW9sHNLGFX6zxbifGxDg&callback=initMap"></script>-->
-    
+
     <!-- Local JS code -->
     <script src="assets/js/scripts.js" defer></script>
 
