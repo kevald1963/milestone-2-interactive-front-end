@@ -93,69 +93,96 @@
                     <div id="map-canvas"></div>
                 </div>
 
-                <!-- Control panel. -->
+                <!-- USER CONTROL PANEL -->
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    
                     <div class="initial-introduction">
                         <!-- This text shown on page initialisation using jQuery. Hidden when departure area selected. -->
-                        <h2 class="intro-route-finder">Using the hospital route finder</h2>
-                        <p> To show a route on the map, first select an area from which you want to depart 
+                        <h2 class="intro-route-finder">Welcome!</h2>
+                        <p>
+                            This app finds and displays routes on a Google Map between the major districts of Tyne & Wear
+                            and the hospitals that serve the county. Routes can be shown for journeys by public transport, 
+                            cycling, walking or driving.
+                        </p>
+                        <p> To show a route on the map, first select the area from which you want to depart 
                             from the menu above.</p>
                     </div>
 
                     <!-- This whole division is hidden on page initialisation using jQuery. Shown when departure area selected. -->
                     <div id="route-planner">
-                        <form>
-                            <div class="row">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
                                 <!-- AREA NAME & USER INSTRUCTIONS -->
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div id="area-name">
-                                        <!-- Name of selected departure area is injected here by JavaScript as an <h2> element. -->
-                                    </div>
-                                    <p> Please select a departure point, a destination hospital and a travel mode 
-                                        below, then click Submit to display the route.
+                                <div id="area-name">
+                                    <!-- Name of selected departure area is injected here by JavaScript as an <h2> element. -->
+                                </div>
+                                <div id="help-text-routes">
+                                    <p> Please select a departure point, the hospital you want to go,
+                                        and a travel mode, then click Find Route to display the route.
                                     </p>
                                 </div>
-                                
+                            
                                 <!-- DEPARTURE POINT DROPDOWN -->
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div id="departure-point">
-                                        <strong>Departure Point:</strong>
-                                        <select id="departurePointList">
-                                            <!-- List of departure points is injected here by JavaScript as multiple <option> elements. -->
-                                        </select>
+                                <div id="departure-point">
+                                    <div class="row">
+                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                            <strong>Departure Point:</strong>
+                                        </div>    
+                                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                            <select id="departure-point-list">
+                                                <!-- List of departure points is injected here by JavaScript as multiple <option> elements. -->
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                                 
                                 <!-- DESTINATION HOSPITAL DROPDOWN -->
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div id="destination-hospital">
-                                        <strong>Destination Hospital:</strong>
-                                        <select id="destinationHospitalList">
-                                            <!-- List of destination-hospitals is injected here by JavaScript as multiple <option> elements. -->
-                                        </select>
-                                    </div>    
+                                <div id="destination-hospital">
+                                    <div class="row">
+                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                            <strong>Hospital:</strong>
+                                        </div>
+                                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                            <select id="destination-hospital-list">
+                                                <!-- List of destination-hospitals is injected here by JavaScript as multiple <option> elements. -->
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                                 
                                 <!-- TRAVEL MODE DROPDOWN -->
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div id="travel-mode">
-                                        <strong>Travel Mode:</strong>
-                                        <select>
-                                            <option value="TRANSIT">Public Transport</option>
-                                            <option value="WALKING">Walking</option>
-                                            <option value="BICYCLING">Cycling</option>
-                                            <option value="DRIVING">Driving</option>
-                                        </select>
+                                <div id="travel-mode">
+                                    <div class="row">
+                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                            <strong>Travel Mode:</strong>
+                                        </div>    
+                                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                            <select id="travel-mode-list">
+                                                <option value="TRANSIT">Public Transport</option>
+                                                <option value="WALKING">Walking</option>
+                                                <option value="BICYCLING">Cycling</option>
+                                                <option value="DRIVING">Driving</option>
+                                            </select>
+                                        </div>    
                                     </div>    
                                 </div>
                                 
-                                <!-- ROUTE SUBMIT BUTTON -->
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <button id="submit-button" class="btn btn-default btn-success" type="submit">Submit</button>
-                                </div>
+                                <div id="route-buttons">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <!-- FIND ROUTE BUTTON -->
+                                            <button id="find-route" class="btn btn-default btn-success" onclick="calculateAndDisplayRoute();" type="submit">Find Route</button>
+                                            
+                                            <!-- CLEAR LAST ROUTE BUTTON -->
+                                            <button id="clear-last-route" class="btn btn-default btn-warning" onclick="calculateAndDisplayRoute();" type="submit">Clear Last Route</button>
+                                            
+                                            <!-- CLEAR ALL ROUTES BUTTON -->
+                                            <button id="clear-all-routes" class="btn btn-default btn-danger" onclick="calculateAndDisplayRoute();" type="submit">Clear All Routes</button>
+                                        </div>
+                                    </div>    
+                                </div>    
                             </div>    
-                        </form>
+                        </div>    
                     </div>
                 </div>
             </div>
