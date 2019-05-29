@@ -9,7 +9,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" 
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
 </head>
 
@@ -44,12 +46,12 @@
                 <ul class="nav navbar-nav">
 
                     <!-- HOME -->
-                    <li><a href="index.html"><i class="fa fa-home hidden-xs" aria-hidden="true"></i><span>Home</span><span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="index.html"><i class="fas fa-home hidden-xs" aria-hidden="true"></i><span>Home</span><span class="sr-only">(current)</span></a></li>
 
                     <!-- DEPARTURE AREAS -->
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-users hidden-xs" aria-hidden="true"></i>
+                            <i class="fas fa-atlas hidden-xs" aria-hidden="true"></i>
                             <span>Your Departure Area</span>
                             <span class="caret"></span>
                         </a>
@@ -60,13 +62,22 @@
                             <li><a name="South Tyneside">South Tyneside</a></li>
                             <li><a name="Sunderland">Sunderland</a></li>
                         </ul>
+                    </li>
 
-                    <!-- MARKERS -->
-                    <li><a href="#">Markers</a></li>
-
-                    <!-- ABOUT -->
-                    <li><a href="about.html">About</a></li>
-
+                    <!-- MAP MARKERS -->
+<!--
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-map-marker-alt hidden-xs" aria-hidden="true"></i>
+                            <span>Map Markers</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul id="map-markers" class="dropdown-menu">
+                            <li><a name="Metro Stations">Metro Stations</a></li>
+                            <li><a name="Bus Stations">Bus Stations</a></li>
+                        </ul>
+                    </li>
+-->                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -95,94 +106,180 @@
 
                 <!-- USER CONTROL PANEL -->
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <div class="initial-introduction">
-                        <!-- This text shown on page initialisation using jQuery. Hidden when departure area selected. -->
-                        <h2 class="intro-route-finder">Welcome!</h2>
-                        <p>
-                            This app finds and displays routes on a Google Map between the major districts of Tyne & Wear
-                            and the hospitals that serve the county. Routes can be shown for journeys by public transport, 
-                            cycling, walking or driving.
-                        </p>
-                        <p> To show a route on the map, first select the area from which you want to depart 
-                            from the menu above.</p>
-                    </div>
+                    
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a id="info" data-toggle="tab" href="#tab-info"><i class="fas fa-info-circle hidden-xs" aria-hidden="true"></i>Info</a></li>
+                        <li><a id="routes" href="#tab-routes"><i class="fas fa-road hidden-xs" aria-hidden="true"></i>Routes</a></li>
+                        <li><a id="markers" href="#tab-markers"><i class="fas fa-map-marker-alt hidden-xs" aria-hidden="true"></i> Markers</a></li>
+                    </ul>
 
-                    <!-- This whole division is hidden on page initialisation using jQuery. Shown when departure area selected. -->
-                    <div id="route-planner">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="tab-content">
+                        <div id="tab-info" class="tab-pane fade in active">
+                            <div class="initial-introduction">
+                                <!-- This text shown on page initialisation using jQuery. Hidden when departure area selected. -->
+                                <h3 class="intro-route-finder">Introduction</h3>
+                                <p>
+                                    This app helps you to:
+                                    <ul class="info">
+                                        <li>
+                                            Find and display routes between various locations in Tyne & Wear and the hospitals that serve the county.
+                                        </li>
+                                        <br>
+                                        <li>
+                                            Mark points on the map to show locations of bus stations, metro stations, hospitals, etc.
+                                        </li>
+                                    </ul>
+                                </p>
+                                <h3 class="intro-route-finder">Get started!</h3>
+                                <p> To show a route or marker on the map, first select the area from which you want to depart 
+                                    from the menu above.</p>
+                            </div>
+                        </div>
 
-                                <!-- AREA NAME & USER INSTRUCTIONS -->
-                                <div id="area-name">
-                                    <!-- Name of selected departure area is injected here by JavaScript as an <h2> element. -->
-                                </div>
-                                <div id="help-text-routes">
-                                    <p> Please select a departure point, the hospital you want to go,
-                                        and a travel mode, then click Find Route to display the route.
-                                    </p>
-                                </div>
-                            
-                                <!-- DEPARTURE POINT DROPDOWN -->
-                                <div id="departure-point">
-                                    <div class="row">
-                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                            <strong>Departure Point:</strong>
-                                        </div>    
-                                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                            <select id="departure-point-list">
-                                                <!-- List of departure points is injected here by JavaScript as multiple <option> elements. -->
-                                            </select>
+                        <!-- This tab is disabled on page initialisation but is enabled using jQuery when departure area selected. -->
+                        <div id="tab-routes" class="tab-pane fade">
+                            <div id="route-planner">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        
+                                        <!-- AREA NAME & USER INSTRUCTIONS -->
+                                        <div id="area-name">
+                                            <!-- Name of selected departure area is injected here by JavaScript as an <h2> element. -->
                                         </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- DESTINATION HOSPITAL DROPDOWN -->
-                                <div id="destination-hospital">
-                                    <div class="row">
-                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                            <strong>Hospital:</strong>
-                                        </div>
-                                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                            <select id="destination-hospital-list">
-                                                <!-- List of destination-hospitals is injected here by JavaScript as multiple <option> elements. -->
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- TRAVEL MODE DROPDOWN -->
-                                <div id="travel-mode">
-                                    <div class="row">
-                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                            <strong>Travel Mode:</strong>
-                                        </div>    
-                                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                            <select id="travel-mode-list">
-                                                <option value="TRANSIT">Public Transport</option>
-                                                <option value="WALKING">Walking</option>
-                                                <option value="BICYCLING">Cycling</option>
-                                                <option value="DRIVING">Driving</option>
-                                            </select>
-                                        </div>    
-                                    </div>    
-                                </div>
-                                
-                                <div id="route-buttons">
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <!-- FIND ROUTE BUTTON -->
-                                            <button id="find-route" class="btn btn-default btn-success" onclick="calculateAndDisplayRoute();" type="submit">Find Route</button>
+                                        <div id="help-text-routes">
+                                            <p>
+                                                This app plots routes from various departure points in your borough to any of the 
+                                                hospitals in and around Tyne & Wear. Routes can be shown for journeys by public transport,
+                                                cycling, walking or driving.
+                                            </p>
                                             
-                                            <!-- CLEAR LAST ROUTE BUTTON -->
-                                            <button id="clear-last-route" class="btn btn-default btn-warning" onclick="calculateAndDisplayRoute();" type="submit">Clear Last Route</button>
-                                            
-                                            <!-- CLEAR ALL ROUTES BUTTON -->
-                                            <button id="clear-all-routes" class="btn btn-default btn-danger" onclick="calculateAndDisplayRoute();" type="submit">Clear All Routes</button>
+                                            <p> Please select a departure point, the hospital you want to go,
+                                                and a travel mode, then click Find Route to display the route.
+                                            </p>
                                         </div>
+                                    
+                                        <!-- DEPARTURE POINT DROPDOWN -->
+                                        <div id="departure-point">
+                                            <div class="row">
+                                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                    <strong>Departure Point:</strong>
+                                                </div>    
+                                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                                    <select id="departure-point-list">
+                                                        <!-- List of departure points is injected here by JavaScript as multiple <option> elements. -->
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- DESTINATION HOSPITAL DROPDOWN -->
+                                        <div id="destination-hospital">
+                                            <div class="row">
+                                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                    <strong>Hospital:</strong>
+                                                </div>
+                                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                                    <select id="destination-hospital-list">
+                                                        <!-- List of destination-hospitals is injected here by JavaScript as multiple <option> elements. -->
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- TRAVEL MODE DROPDOWN -->
+                                        <div id="travel-mode">
+                                            <div class="row">
+                                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                    <strong>Travel Mode:</strong>
+                                                </div>    
+                                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                                    <select id="travel-mode-list">
+                                                        <option value="TRANSIT">Public Transport</option>
+                                                        <option value="WALKING">Walking</option>
+                                                        <option value="BICYCLING">Cycling</option>
+                                                        <option value="DRIVING">Driving</option>
+                                                    </select>
+                                                </div>    
+                                            </div>    
+                                        </div>
+                                        
+                                        <div id="route-buttons">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                    <!-- 'FIND ROUTE' BUTTON -->
+                                                    <button id="find-route" class="btn btn-default btn-success" onclick="calculateAndDisplayRoute();" type="submit">Find Route</button>
+                                                    
+                                                    <!-- 'CLEAR LAST ROUTE' BUTTON -->
+                                                    <button id="clear-last-route" class="btn btn-default btn-warning" onclick="calculateAndDisplayRoute();" type="submit">Clear Last Route</button>
+                                                    
+                                                    <!-- 'CLEAR ALL ROUTES' BUTTON -->
+                                                    <button id="clear-all-routes" class="btn btn-default btn-danger" onclick="calculateAndDisplayRoute();" type="submit">Clear All Routes</button>
+                                                </div>
+                                            </div>    
+                                        </div>    
                                     </div>    
                                 </div>    
-                            </div>    
-                        </div>    
+                            </div>
+                        </div>
+
+                        <div id="tab-markers" class="tab-pane fade">
+                            <div id="point-markers">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        
+                                        <!-- AREA NAME & USER INSTRUCTIONS -->
+                                        <div id="area-name">
+                                            <!-- Name of selected departure area is injected here by JavaScript as an <h2> element. -->
+                                        </div>
+                                        <div id="help-text-markers">
+                                            <p>
+                                                This app marks major transport points in your borough or across Tyne & Wear.
+                                            </p>
+                                        </div>
+                                    
+                                        <!-- TRANSPORT POINTS DROPDOWN -->
+                                        <div id="transport-points">
+                                            <div class="row">
+                                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                    <strong>Transport Points:</strong>
+                                                </div>    
+                                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                                    <select id="transport-point-list">
+                                                        <!-- List of transport points is injected here by JavaScript as multiple <option> elements. -->
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- HOSPITALS DROPDOWN -->
+                                        <div id="hospitals">
+                                            <div class="row">
+                                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                                    <strong>Hospitals:</strong>
+                                                </div>
+                                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                                    <select id="hospital-list">
+                                                        <!-- List of hospitals is injected here by JavaScript as multiple <option> elements. -->
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div id="marker-buttons">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                    <!-- 'SHOW MARKERS' BUTTON -->
+                                                    <button id="show-markers" class="btn btn-default btn-success" onclick="createMarkers();" type="submit">Show Markers</button>
+                                                    
+                                                    <!-- 'CLEAR ALL MARKERS' BUTTON -->
+                                                    <button id="clear-all-markers" class="btn btn-default btn-danger" onclick="createMarkers();" type="submit">Clear All Markers</button>
+                                                </div>
+                                            </div>    
+                                        </div>    
+                                    </div>    
+                                </div>    
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

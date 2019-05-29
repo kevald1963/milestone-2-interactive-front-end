@@ -1,4 +1,4 @@
-// Global scope variables:
+7// Global scope variables:
 // =======================
 
 // Google Maps map object.
@@ -258,19 +258,25 @@ function initMap() {
         departureArea = $(this).attr("name");
 
         // Set the area heading for the Route Planner panel.
-        htmlText = "<h2>" + departureArea + "</h2>";
+        htmlText = "<h3> Routes from " + departureArea + "</h3>";
         document.getElementById("area-name").innerHTML = htmlText;
 
         // Call function to display departure area Google map and associated user controls.
         getAreaCentre();
+        
+        // Enable the Routes and Markers tabs.
+        $("#routes").attr("data-toggle","tab");
+        $("#markers").attr("data-toggle","tab");
+
+        // Make the Routes tab active.
+        $('.nav-tabs a[id="routes"]').tab('show');
 
         // Hide initial elements. 
         $("#county-map").hide();
-        $(".initial-introduction").hide();
 
-        // Show elements relevant to the departure area.
+        // Show Google Map centred on selected departure area.
         $("#map-canvas").show();
-        $("#route-planner").show();
+
     });
 };
 
@@ -386,3 +392,52 @@ function calculateAndDisplayRoute() {
         };
     });
 };
+
+function createMarkers() {
+
+    var mapMarkers;
+
+    // Display the appropriate marker depending on which type was selected from the main menu.
+//    $("#map-markers li a").click(function() {
+
+        // Get the marker type from the selected menu item.
+/*        mapMarkers = $(this).attr("name");
+
+        // Set the marker type for the Marker type.
+        htmlText = "<h2>" + mapMarkers + "</h2>";
+        document.getElementById("marker-type-name").innerHTML = htmlText;
+
+        // Call function to display map markers on Google Map.
+        //getAreaCentre();
+*/
+//    });
+
+    // Marker labels.
+    var labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    // Locations of South Tyneside Metro stations.
+    var locations = [
+        { lat: 54.975637, lng: -1.520502 },  // Hebburn
+        { lat: 54.979808, lng: -1.493701 },  // Jarrow
+        { lat: 54.974583, lng: -1.465972 },  // Bede
+        { lat: 54.971892, lng: -1.455415 },  // Simonside
+        { lat: 54.976342, lng: -1.441676 },  // Tyne Dock
+        { lat: 54.986519, lng: -1.431832 },  // Chichester
+        { lat: 54.999409, lng: -1.433943 }   // South Shields
+    ];
+
+    // Create the markers.
+    var markers = locations.map(function(location, i) {
+        return new google.maps.Marker({
+            position: location,
+            label: labels[i % labels.length]
+        });
+    });
+
+    // Add a marker clusterer to manage the markers.
+    var markerCluster = new MarkerClusterer(map, markers,
+        {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+        
+};
+
+

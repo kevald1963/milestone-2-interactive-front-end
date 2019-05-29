@@ -9,7 +9,13 @@ header {
 /* Remove bullet points from lists by default. */
 
 ul {
-    list-style: none;
+    list-style: disc;
+}
+
+/* Show bullet points for information panel text. */
+
+.info {
+    list-style: disc;
 }
 
 .uppercase {
@@ -29,24 +35,25 @@ ul {
     display: normal;
 }
 
-#route-planner {
-    display: none;
+/*---------------------------------------------------- Dropdown menus */
+
+#route-planner, #point-markers {
     padding-left: 0;
     margin-left: 0;
 }
 
-#departure-point, #destination-hospital, #travel-mode {
+#departure-point, #destination-hospital, #travel-mode, #transport-points, #hospitals {
     margin-top: 5px;
     margin-left: 0;
 }
 
-#route-buttons {
+#route-buttons, #marker-buttons {
     margin-top: 20px;
 }
 
 /*-------------------------------------------------- Font Awesome stylings */
 
-.fa-arrow-icon {
+.fa-home, .fa-atlas, .fa-info-circle, .fa-road, .fa-map-marker-alt {
     padding-right: 5px;
 }
 
