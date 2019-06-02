@@ -35,6 +35,19 @@ ul {
     display: normal;
 }
 
+/*---------------------------------------------------- Tabs */
+
+/* The Info tab is always enabled so show the tabs title in black.* /
+#info {
+    color: #000;
+}
+
+/* Disabling is done with JavaScript, but show the tabs titles in grey initially to indicate they are disabled. */
+#routes, #markers {
+    color: grey;
+}
+
+
 /*---------------------------------------------------- Dropdown menus */
 
 #route-planner, #point-markers {
@@ -51,10 +64,22 @@ ul {
     margin-top: 20px;
 }
 
+.btn-default {
+    margin: 5px;
+    width: 150px;
+}
 /*-------------------------------------------------- Font Awesome stylings */
 
 .fa-home, .fa-atlas, .fa-info-circle, .fa-road, .fa-map-marker-alt {
     padding-right: 5px;
+}
+
+.fa-home, .fa-atlas {
+    color: #000;
+}
+
+#home-menu-icon .fa-home:hover, #departure-menu-icon .fa-atlas:hover {
+    color: #e84610;
 }
 
 /*-------------------------------------------------- Heading */

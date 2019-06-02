@@ -44,15 +44,17 @@
             <!-- Collect the nav links for toggling. -->
             <div class="collapse navbar-collapse" id="collapse-menu">
                 <ul class="nav navbar-nav">
-
                     <!-- HOME -->
-                    <li class="active"><a href="index.html"><i class="fas fa-home hidden-xs" aria-hidden="true"></i><span>Home</span><span class="sr-only">(current)</span></a></li>
-
-                    <!-- DEPARTURE AREAS -->
+                    <li class="active"><a href="index.html"><i class="fas fa-home hidden-xs" aria-hidden="true">
+                    </i><span>Home</span><span class="sr-only">(current)</span></a></li>
+               </ul>
+            
+                <!-- DEPARTURE AREAS -->
+                <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <a id="departure-menu" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-atlas hidden-xs" aria-hidden="true"></i>
-                            <span>Your Departure Area</span>
+                            <span>Departure Area</span>
                             <span class="caret"></span>
                         </a>
                         <ul id="departure-area" class="dropdown-menu">
@@ -63,21 +65,6 @@
                             <li><a name="Sunderland">Sunderland</a></li>
                         </ul>
                     </li>
-
-                    <!-- MAP MARKERS -->
-<!--
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-map-marker-alt hidden-xs" aria-hidden="true"></i>
-                            <span>Map Markers</span>
-                            <span class="caret"></span>
-                        </a>
-                        <ul id="map-markers" class="dropdown-menu">
-                            <li><a name="Metro Stations">Metro Stations</a></li>
-                            <li><a name="Bus Stations">Bus Stations</a></li>
-                        </ul>
-                    </li>
--->                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -116,10 +103,9 @@
                     <div class="tab-content">
                         <div id="tab-info" class="tab-pane fade in active">
                             <div class="initial-introduction">
-                                <!-- This text shown on page initialisation using jQuery. Hidden when departure area selected. -->
-                                <h3 class="intro-route-finder">Introduction</h3>
+                                <h3>Introduction</h3>
                                 <p>
-                                    This app helps you to:
+                                    Use this app to help you to:
                                     <ul class="info">
                                         <li>
                                             Find and display routes between various locations in Tyne & Wear and the hospitals that serve the county.
@@ -130,9 +116,14 @@
                                         </li>
                                     </ul>
                                 </p>
-                                <h3 class="intro-route-finder">Get started!</h3>
-                                <p> To show a route or marker on the map, first select the area from which you want to depart 
-                                    from the menu above.</p>
+                                
+                                <h3>Get started!</h3>
+                                <p>
+                                    Use <a id="departure-menu-icon" href="#" onmouseover="displayDepartureMenu()"><i class="fas fa-atlas" aria-hidden="true"></i></a>to select 
+                                    the area from which you want to depart. You will then be able to show routes and markers on 
+                                    the map.
+                                </p>
+                                
                             </div>
                         </div>
 
@@ -208,15 +199,17 @@
                                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                                     <!-- 'FIND ROUTE' BUTTON -->
                                                     <button id="find-route" class="btn btn-default btn-success" onclick="calculateAndDisplayRoute();" type="submit">Find Route</button>
-                                                    
-                                                    <!-- 'CLEAR LAST ROUTE' BUTTON -->
-                                                    <button id="clear-last-route" class="btn btn-default btn-warning" onclick="calculateAndDisplayRoute();" type="submit">Clear Last Route</button>
-                                                    
+                                                </div>
+                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                                     <!-- 'CLEAR ALL ROUTES' BUTTON -->
                                                     <button id="clear-all-routes" class="btn btn-default btn-danger" onclick="calculateAndDisplayRoute();" type="submit">Clear All Routes</button>
                                                 </div>
                                             </div>    
-                                        </div>    
+                                        </div>
+                                        <h3>Want to start again?</h3>
+                                        <p>
+                                            To select another area, click <a id="home-menu-icon" href="index.html"><i class="fas fa-home" aria-hidden="true"></i></a>to reset the app, 
+                                        </p>
                                     </div>    
                                 </div>    
                             </div>
@@ -276,6 +269,9 @@
                                                 </div>
                                             </div>    
                                         </div>    
+                                        <p>
+                                            To select another area, click <a "home-menu-icon" href="index.html"><i class="fas fa-home" aria-hidden="true"></i></a>to reset the app, 
+                                        </p>
                                     </div>    
                                 </div>    
                             </div>

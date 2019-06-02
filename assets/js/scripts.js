@@ -1,4 +1,4 @@
-7// Global scope variables:
+// Global scope variables:
 // =======================
 
 // Google Maps map object.
@@ -268,6 +268,10 @@ function initMap() {
         $("#routes").attr("data-toggle","tab");
         $("#markers").attr("data-toggle","tab");
 
+        // Change colour of tab titles to show they are enabled.
+        $("#routes").css("color", "#000");
+        $("#markers").css("color", "#000");
+
         // Make the Routes tab active.
         $('.nav-tabs a[id="routes"]').tab('show');
 
@@ -288,9 +292,6 @@ function getAreaCentre() {
         if (departureArea == myDepartureObj.areaCenters[i].area) {
             latAC = myDepartureObj.areaCenters[i].latlng[0];
             lngAC = myDepartureObj.areaCenters[i].latlng[1];
-
-            // console.log("latAC = " + latAC);
-            // console.log("lngAC = " + lngAC);
 
             // Show Google Map of selected area.
             departureAreaCenter = new google.maps.LatLng(latAC, lngAC);
@@ -336,9 +337,6 @@ function calculateAndDisplayRoute() {
     // Get the destination hospital name from the selected dropdown item.
     var destinationHospitalName = $("#destination-hospital-list option:selected").val();
 
-    // console.log("departurePointName = " + departurePointName);
-    // console.log("destinationHospitalName = " + destinationHospitalName);
-
     // Set co-ordinates for departure point.
     for (i in myDepartureObj.areaCenters) {
         if (departureArea == myDepartureObj.areaCenters[i].area) {
@@ -354,9 +352,6 @@ function calculateAndDisplayRoute() {
         };
     };
 
-    // console.log("latDP = " + latDP);
-    // console.log("lngDP = " + lngDP);
-
     // Set co-ordinates for destination hospital.
     for (i in myDestinationObj.destinationHospitals) {
         if (destinationHospitalName == myDestinationObj.destinationHospitals[i].hospital) {
@@ -366,16 +361,12 @@ function calculateAndDisplayRoute() {
         };
     };
 
-    // console.log("latDH = " + latDH);
-    // console.log("lngDH = " + lngDH);
-
     // Prepare the Directions Service request.
     journeyStart = new google.maps.LatLng(latDP, lngDP);     // Departure Point co-ordinates.
     journeyEnd = new google.maps.LatLng(latDH, lngDH);       // Destination Hospital co-ordinates.
     
     // Get the travel mode name from the selected dropdown item.
     journeyMode = $("#travel-mode-list option:selected").val();
-    console.log("journeyMode = " + journeyMode);
 
     var request = {
         origin: journeyStart,               
@@ -396,21 +387,6 @@ function calculateAndDisplayRoute() {
 function createMarkers() {
 
     var mapMarkers;
-
-    // Display the appropriate marker depending on which type was selected from the main menu.
-//    $("#map-markers li a").click(function() {
-
-        // Get the marker type from the selected menu item.
-/*        mapMarkers = $(this).attr("name");
-
-        // Set the marker type for the Marker type.
-        htmlText = "<h2>" + mapMarkers + "</h2>";
-        document.getElementById("marker-type-name").innerHTML = htmlText;
-
-        // Call function to display map markers on Google Map.
-        //getAreaCentre();
-*/
-//    });
 
     // Marker labels.
     var labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -440,4 +416,7 @@ function createMarkers() {
         
 };
 
-
+// Open the Departure Area menu if the 'atlas' icon in the body of the Info tab is hovered over.
+function displayDepartureMenu() {
+  document.getElementById("departure-menu").click();
+};
