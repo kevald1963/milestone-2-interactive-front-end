@@ -35,9 +35,10 @@ ul {
     display: normal;
 }
 
-/*---------------------------------------------------- Tabs */
+/* ---------------------------------------------------- Tabs */
 
-/* The Info tab is always enabled so show the tabs title in black.* /
+/* The Info tab is always enabled so show the tabs title in black. */
+
 #info {
     color: #000;
 }
@@ -48,7 +49,7 @@ ul {
 }
 
 
-/*---------------------------------------------------- Dropdown menus */
+/*---------------------------------------------------- Routes tab controls */
 
 #route-planner, #point-markers {
     padding-left: 0;
@@ -65,9 +66,18 @@ ul {
 }
 
 .btn-default {
-    margin: 5px;
-    width: 150px;
+    margin-left: 0;
 }
+
+.checkbox {
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+#multi-routes-checkbox {
+    margin-right: 10px;
+}
+
 /*-------------------------------------------------- Font Awesome stylings */
 
 .fa-home, .fa-atlas, .fa-info-circle, .fa-road, .fa-map-marker-alt {
@@ -78,7 +88,7 @@ ul {
     color: #000;
 }
 
-#home-menu-icon .fa-home:hover, #departure-menu-icon .fa-atlas:hover {
+#home-menu-icon .fa-home:hover {
     color: #e84610;
 }
 

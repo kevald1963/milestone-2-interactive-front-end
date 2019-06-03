@@ -4,6 +4,9 @@
 // Google Maps map object.
 var map;
 
+var directionsDisplay;
+var directionsService;
+
 // Latitude and longtitude variables for Area Centres.
 var latAC, lngAC;
 
@@ -19,7 +22,7 @@ var htmlText = "", departurePointName = "", departureAreaCenter = "", departureA
 
 // Local data objects:
 // ===================
-// Object naming convention: Note that array names are plural, while item names within an array are singular, unless numeric.
+// Object naming convention: Note that array text values are plural, while text items within an array are singular.
 
 // This object holds journey departure data as follows:
 // 1. Name and co-ordinates for the approximate geographical centre of each departure area i.e. of the selected borough.
@@ -264,6 +267,11 @@ function initMap() {
         // Call function to display departure area Google map and associated user controls.
         getAreaCentre();
         
+        // Once the area map object is defined, objects for the Directions Renderer and 
+        // Directions Service can be instantiated.
+        directionsDisplay = new google.maps.DirectionsRenderer;
+        directionsService = new google.maps.DirectionsService;
+        
         // Enable the Routes and Markers tabs.
         $("#routes").attr("data-toggle","tab");
         $("#markers").attr("data-toggle","tab");
@@ -320,11 +328,17 @@ function getAreaCentre() {
     };
 };
 
+// Function called from: 'Find Route' button
 function calculateAndDisplayRoute() {
-
-    var directionsDisplay = new google.maps.DirectionsRenderer;
-    var directionsService = new google.maps.DirectionsService;
     
+    // If the multi-routes checkbox is checked then create new instances of the DirectionsRenderer 
+    // and DirectionsService objects more than one route can be shown on the map at the same time.
+    if ($("#multi-routes-checkbox").prop('checked')) {
+        console.log("checkbox is checked");   
+        directionsDisplay = new google.maps.DirectionsRenderer;
+        directionsService = new google.maps.DirectionsService;
+    };
+
     directionsDisplay.setMap(map);
 
     var journeyStart;
@@ -414,9 +428,4 @@ function createMarkers() {
     var markerCluster = new MarkerClusterer(map, markers,
         {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
         
-};
-
-// Open the Departure Area menu if the 'atlas' icon in the body of the Info tab is hovered over.
-function displayDepartureMenu() {
-  document.getElementById("departure-menu").click();
 };

@@ -9,7 +9,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" 
           integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
@@ -119,11 +118,9 @@
                                 
                                 <h3>Get started!</h3>
                                 <p>
-                                    Use <a id="departure-menu-icon" href="#" onmouseover="displayDepartureMenu()"><i class="fas fa-atlas" aria-hidden="true"></i></a>to select 
-                                    the area from which you want to depart. You will then be able to show routes and markers on 
-                                    the map.
+                                    First select the area from which you want to depart from the <strong>Departure Area</strong> menu above. 
+                                    You will then be able to find routes and show markers on the map.
                                 </p>
-                                
                             </div>
                         </div>
 
@@ -135,17 +132,19 @@
         
                                         <!-- AREA NAME & USER INSTRUCTIONS -->
                                         <div id="area-name">
-                                            <!-- Name of selected departure area is injected here by JavaScript as an <h2> element. -->
+                                            <!-- "Routes from" + <name of selected departure area> is injected here by JavaScript as an <h2> element. -->
                                         </div>
                                         <div id="help-text-routes">
                                             <p>
-                                                This app plots routes from various departure points in your borough to any of the 
+                                                On here you can plot routes from various departure points in your borough to any of the 
                                                 hospitals in and around Tyne & Wear. Routes can be shown for journeys by public transport,
                                                 cycling, walking or driving.
                                             </p>
-                                            
                                             <p> Please select a departure point, the hospital you want to go,
                                                 and a travel mode, then click Find Route to display the route.
+                                            </p>
+                                            <p> Note that only one route is shown at a time by default. To leave each new route displayed every time 
+                                                you click 'Find Route', then first check the 'Allow multiple routes' checkbox.
                                             </p>
                                         </div>
                                     
@@ -153,7 +152,7 @@
                                         <div id="departure-point">
                                             <div class="row">
                                                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                                    <strong>Departure Point:</strong>
+                                                    <strong>Departure:</strong>
                                                 </div>    
                                                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                                     <select id="departure-point-list">
@@ -181,7 +180,7 @@
                                         <div id="travel-mode">
                                             <div class="row">
                                                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                                    <strong>Travel Mode:</strong>
+                                                    <strong>Mode:</strong>
                                                 </div>    
                                                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                                     <select id="travel-mode-list">
@@ -198,17 +197,20 @@
                                             <div class="row">
                                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                                     <!-- 'FIND ROUTE' BUTTON -->
-                                                    <button id="find-route" class="btn btn-default btn-success" onclick="calculateAndDisplayRoute();" type="submit">Find Route</button>
+                                                    <button class="btn btn-default btn-success" onclick="calculateAndDisplayRoute();" type="submit">Find Route</button>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                    <!-- 'CLEAR ALL ROUTES' BUTTON -->
-                                                    <button id="clear-all-routes" class="btn btn-default btn-danger" onclick="calculateAndDisplayRoute();" type="submit">Clear All Routes</button>
+                                                    <!-- 'MULTI-ROUTES' CHECKBOX -->
+                                                    <label class="checkbox">
+                                                        <input type="checkbox" id="multi-routes-checkbox">    
+                                                        Allow multiple routes?
+                                                    </label>
                                                 </div>
                                             </div>    
                                         </div>
                                         <h3>Want to start again?</h3>
                                         <p>
-                                            To select another area, click <a id="home-menu-icon" href="index.html"><i class="fas fa-home" aria-hidden="true"></i></a>to reset the app, 
+                                            Click <a id="home-menu-icon" href="index.html"><i class="fas fa-home" aria-hidden="true"></i></a>to select another departure area.
                                         </p>
                                     </div>    
                                 </div>    
@@ -269,8 +271,9 @@
                                                 </div>
                                             </div>    
                                         </div>    
+                                        <h3>Want to start again?</h3>
                                         <p>
-                                            To select another area, click <a "home-menu-icon" href="index.html"><i class="fas fa-home" aria-hidden="true"></i></a>to reset the app, 
+                                            Click <a id="home-menu-icon" href="index.html"><i class="fas fa-home" aria-hidden="true"></i></a>to select another departure area.
                                         </p>
                                     </div>    
                                 </div>    
