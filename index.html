@@ -131,7 +131,7 @@
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         
                                         <!-- AREA NAME & USER INSTRUCTIONS -->
-                                        <div id="area-name">
+                                        <div id="area-name-routes">
                                             <!-- "Routes from" + <name of selected departure area> is injected here by JavaScript as an <h2> element. -->
                                         </div>
                                         <div id="help-text-routes">
@@ -193,12 +193,8 @@
                                             </div>    
                                         </div>
                                         
-                                        <div id="route-buttons">
+                                        <div id="buttons-routes">
                                             <div class="row">
-                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                    <!-- 'FIND ROUTE' BUTTON -->
-                                                    <button class="btn btn-default btn-success" onclick="calculateAndDisplayRoute();" type="submit">Find Route</button>
-                                                </div>
                                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                                     <!-- 'MULTI-ROUTES' CHECKBOX -->
                                                     <label class="checkbox">
@@ -206,11 +202,15 @@
                                                         Allow multiple routes?
                                                     </label>
                                                 </div>
+                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                    <!-- 'FIND ROUTE' BUTTON -->
+                                                    <button class="btn btn-default btn-success" onclick="calculateAndDisplayRoute();" type="submit">Find Route</button>
+                                                </div>
                                             </div>    
                                         </div>
-                                        <h3>Want to start again?</h3>
+                                        <h3>Start again?</h3>
                                         <p>
-                                            Click <a id="home-menu-icon" href="index.html"><i class="fas fa-home" aria-hidden="true"></i></a>to select another departure area.
+                                            Click <a id="home-menu-icon" href="index.html"><i class="fas fa-home" aria-hidden="true"></i></a>to reset the map.
                                         </p>
                                     </div>    
                                 </div>    
@@ -223,57 +223,54 @@
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         
                                         <!-- AREA NAME & USER INSTRUCTIONS -->
-                                        <div id="area-name">
+                                        <div id="area-name-markers">
                                             <!-- Name of selected departure area is injected here by JavaScript as an <h2> element. -->
                                         </div>
                                         <div id="help-text-markers">
                                             <p>
-                                                This app marks major transport points in your borough or across Tyne & Wear.
+                                                On here you can display markers on the map for departure points in your area and for 
+                                                all hospitals area across Tyne & Wear.
+                                            </p>
+                                            <p>
+                                                Click the check box below to display markers for all places across Tyne & Wear.
                                             </p>
                                         </div>
                                     
-                                        <!-- TRANSPORT POINTS DROPDOWN -->
-                                        <div id="transport-points">
+                                        <!-- MARKERS: DEPARTURE POINTS CHECKBOX -->
+                                        <div id="departure-points-markers">
                                             <div class="row">
-                                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                                    <strong>Transport Points:</strong>
-                                                </div>    
-                                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                                    <select id="transport-point-list">
-                                                        <!-- List of transport points is injected here by JavaScript as multiple <option> elements. -->
-                                                    </select>
+                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                    <label class="checkbox">
+                                                        <input type="checkbox" id="departures-checkbox" checked>    
+                                                        Departure points
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
                                         
-                                        <!-- HOSPITALS DROPDOWN -->
-                                        <div id="hospitals">
+                                        <!-- MARKERS: HOSPITALS CHECKBOX -->
+                                        <div id="hospitals-markers">
                                             <div class="row">
-                                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                                    <strong>Hospitals:</strong>
-                                                </div>
-                                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                                                    <select id="hospital-list">
-                                                        <!-- List of hospitals is injected here by JavaScript as multiple <option> elements. -->
-                                                    </select>
+                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                    <label class="checkbox">
+                                                        <input type="checkbox" id="hospitals-checkbox" checked>    
+                                                        Hospitals
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
                                         
-                                        <div id="marker-buttons">
+                                        <div id="buttons-markers">
                                             <div class="row">
                                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                                     <!-- 'SHOW MARKERS' BUTTON -->
                                                     <button id="show-markers" class="btn btn-default btn-success" onclick="createMarkers();" type="submit">Show Markers</button>
-                                                    
-                                                    <!-- 'CLEAR ALL MARKERS' BUTTON -->
-                                                    <button id="clear-all-markers" class="btn btn-default btn-danger" onclick="createMarkers();" type="submit">Clear All Markers</button>
                                                 </div>
                                             </div>    
                                         </div>    
-                                        <h3>Want to start again?</h3>
+                                        <h3>Start again?</h3>
                                         <p>
-                                            Click <a id="home-menu-icon" href="index.html"><i class="fas fa-home" aria-hidden="true"></i></a>to select another departure area.
+                                            Click <a id="home-menu-icon" href="index.html"><i class="fas fa-home" aria-hidden="true"></i></a>to reset the map.
                                         </p>
                                     </div>    
                                 </div>    

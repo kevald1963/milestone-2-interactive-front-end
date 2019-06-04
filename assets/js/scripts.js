@@ -7,14 +7,17 @@ var map;
 var directionsDisplay;
 var directionsService;
 
-// Latitude and longtitude variables for Area Centres.
+// Latitude and longtitude for Area Centres.
 var latAC, lngAC;
 
-// Latitude and longtitude variables for Departure Points.
+// Latitude and for Departure Points.
 var latDP, lngDP;
 
-// Latitude and longtitude variables for Destination Hospitals.
+// Latitude and longtitude for Destination Hospitals.
 var latDH, lngDH;
+
+// Names for Marker titles.
+var hospitalName = "", locationName = ""
 
 var myDepartureObj = {}, myDestinationObj = {};
 var i = 0, j = 0, k = 0;
@@ -262,9 +265,13 @@ function initMap() {
 
         // Set the area heading for the Route Planner panel.
         htmlText = "<h3> Routes from " + departureArea + "</h3>";
-        document.getElementById("area-name").innerHTML = htmlText;
+        document.getElementById("area-name-routes").innerHTML = htmlText;
 
-        // Call function to display departure area Google map and associated user controls.
+        // Set the area heading for the Markers panel.
+        htmlText = "<h3> Markers for " + departureArea + "</h3>";
+        document.getElementById("area-name-markers").innerHTML = htmlText;
+
+        // Call function to display departure area Google map and associated user controls for both Routes and Markers tabs.
         getAreaCentre();
         
         // Once the area map object is defined, objects for the Directions Renderer and 
@@ -308,21 +315,19 @@ function getAreaCentre() {
                 center: departureAreaCenter
             });        
 
-            // Populate the departure point dropdown list.
+            // Populate the departure point dropdown list on the Routes tab.
             for (j in myDepartureObj.areaCenters[i].departurePoints) {
                 htmlText += "<option>" + myDepartureObj.areaCenters[i].departurePoints[j].departurePointName + "</option>"; 
             };
-
             document.getElementById("departure-point-list").innerHTML = htmlText; 
 
-            // Populate the destination hospital dropdown list.
+            // Populate the destination hospital dropdown list on the Routes tab.
             htmlText = "";   
             for (k in myDestinationObj.destinationHospitals) {
                 htmlText += "<option>" + myDestinationObj.destinationHospitals[k].hospital + "</option>"; 
             };
 
             document.getElementById("destination-hospital-list").innerHTML = htmlText;
-            htmlText = "";   
             break;
         };
     };
@@ -332,9 +337,8 @@ function getAreaCentre() {
 function calculateAndDisplayRoute() {
     
     // If the multi-routes checkbox is checked then create new instances of the DirectionsRenderer 
-    // and DirectionsService objects more than one route can be shown on the map at the same time.
-    if ($("#multi-routes-checkbox").prop('checked')) {
-        console.log("checkbox is checked");   
+    // and DirectionsService objects so more than one route can be shown on the map at the same time.
+    if ($("#multi-routes-checkbox").prop("checked")) {
         directionsDisplay = new google.maps.DirectionsRenderer;
         directionsService = new google.maps.DirectionsService;
     };
@@ -351,7 +355,7 @@ function calculateAndDisplayRoute() {
     // Get the destination hospital name from the selected dropdown item.
     var destinationHospitalName = $("#destination-hospital-list option:selected").val();
 
-    // Set co-ordinates for departure point.
+    // Get co-ordinates for departure point.
     for (i in myDepartureObj.areaCenters) {
         if (departureArea == myDepartureObj.areaCenters[i].area) {
             // If departure point selected in menu matches value in object then get the corresponding
@@ -366,7 +370,7 @@ function calculateAndDisplayRoute() {
         };
     };
 
-    // Set co-ordinates for destination hospital.
+    // Get co-ordinates for destination hospital.
     for (i in myDestinationObj.destinationHospitals) {
         if (destinationHospitalName == myDestinationObj.destinationHospitals[i].hospital) {
             latDH = myDestinationObj.destinationHospitals[i].latlng[0];
@@ -398,6 +402,7 @@ function calculateAndDisplayRoute() {
     });
 };
 
+// Function called from: 'Show Markers' button
 function createMarkers() {
 
     var mapMarkers;
@@ -405,22 +410,49 @@ function createMarkers() {
     // Marker labels.
     var labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    // Locations of South Tyneside Metro stations.
-    var locations = [
-        { lat: 54.975637, lng: -1.520502 },  // Hebburn
-        { lat: 54.979808, lng: -1.493701 },  // Jarrow
-        { lat: 54.974583, lng: -1.465972 },  // Bede
-        { lat: 54.971892, lng: -1.455415 },  // Simonside
-        { lat: 54.976342, lng: -1.441676 },  // Tyne Dock
-        { lat: 54.986519, lng: -1.431832 },  // Chichester
-        { lat: 54.999409, lng: -1.433943 }   // South Shields
-    ];
+    var iconColourURL = "";
+    
+    var locations = [];
+
+    // If departures checkbox is checked, get co-ordinates for all departure points in the selected area.
+    if ($("#departures-checkbox").prop("checked")) {
+        iconColorURL = "https://maps.google.com/mapfiles/ms/icons/red.png";
+        for (i in myDepartureObj.areaCenters) {
+            if (departureArea == myDepartureObj.areaCenters[i].area) {
+                for (j in myDepartureObj.areaCenters[i].departurePoints) {
+                    latDP = myDepartureObj.areaCenters[i].departurePoints[j].latlng[0];
+                    lngDP = myDepartureObj.areaCenters[i].departurePoints[j].latlng[1];
+                    locationName = myDepartureObj.areaCenters[i].departurePoints[j].departurePointName;
+                    console.log("locationName = " + locationName);
+                    locations[j] = {lat: latDP, lng: lngDP, locName: locationName};
+                };
+            };
+        };
+    };
+
+    // If hospital checkbox is checked, get co-ordinates for all hospitals across Tyne & Wear.
+    if ($("#hospitals-checkbox").prop("checked")) {
+        iconColorURL = "https://maps.google.com/mapfiles/ms/icons/blue.png";
+        for (i in myDestinationObj.destinationHospitals) {
+                latDH = myDestinationObj.destinationHospitals[i].latlng[0];
+                lngDH = myDestinationObj.destinationHospitals[i].latlng[1];
+                hospitalName = myDestinationObj.destinationHospitals[i].hospital;
+                console.log("hospital name = " + hospitalName);
+                locations[i] = {lat: latDH, lng: lngDH, hosName: hospitalName};
+        };
+    };
 
     // Create the markers.
     var markers = locations.map(function(location, i) {
         return new google.maps.Marker({
             position: location,
-            label: labels[i % labels.length]
+            label: labels[i % labels.length],
+            title: "High Street",               // Can I get this from "locations[]" array?
+            icon: {
+                url: iconColorURL,              // Use red icon for Departures, blue for Hospitals.
+                scaledSize: new google.maps.Size(50, 50),
+                labelOrigin: new google.maps.Point(25, 18)
+            }    
         });
     });
 
