@@ -49,7 +49,7 @@ ul {
 }
 
 
-/*---------------------------------------------------- Routes tab controls */
+/*---------------------------------------------------- Routes / Markers tab controls */
 
 #route-planner, #point-markers {
     padding-left: 0;
@@ -61,21 +61,26 @@ ul {
     margin-left: 0;
 }
 
-#buttons-routes, #buttons-markers {
-    margin-top: 20px;
+.buttons-markers {
+    margin-bottom: 10px;
+}
+
+.clear-map-btn {
+    margin-top: 10px;
 }
 
 .btn-default {
     margin-left: 0;
+    width: 120px;
+}
+
+#multi-routes-checkbox {
+    margin-right: 10px;
 }
 
 .checkbox {
     margin-top: 0;
     margin-left: 20px;
-}
-
-#multi-routes-checkbox {
-    margin-right: 10px;
 }
 
 /*-------------------------------------------------- Font Awesome stylings */

@@ -130,7 +130,7 @@
                                                 and a travel mode, then click Find Route to display the route.
                                             </p>
                                             <p> Note that only one route is shown at a time by default. To leave each new route displayed every time 
-                                                you click 'Find Route', then first check the 'Allow multiple routes' checkbox.
+                                                you click <strong>Find Route</strong>, first check the <strong>Allow multiple routes</strong> checkbox.
                                             </p>
                                         </div>
                                     
@@ -188,16 +188,20 @@
                                                         Allow multiple routes?
                                                     </label>
                                                 </div>
+                                            </div>    
+                                            <div class="row">
                                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                                     <!-- 'FIND ROUTE' BUTTON -->
                                                     <button class="btn btn-default btn-success" onclick="calculateAndDisplayRoute();" type="submit">Find Route</button>
                                                 </div>
                                             </div>    
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                    <!-- 'CLEAR MAP' BUTTON -->
+                                                    <button class="btn btn-default btn-warning clear-map-btn" onclick="getAreaCentre();" type="submit">Clear Map</button>
+                                                </div>    
+                                            </div>    
                                         </div>
-                                        <h3>Start again?</h3>
-                                        <p>
-                                            Click <a id="home-menu-icon" href="index.html"><i class="fas fa-home" aria-hidden="true"></i></a>to reset the map.
-                                        </p>
                                     </div>    
                                 </div>    
                             </div>
@@ -212,13 +216,11 @@
                                         <div id="area-name-markers">
                                             <!-- Name of selected departure area is injected here by JavaScript as an <h2> element. -->
                                         </div>
+                                        
                                         <div id="help-text-markers">
                                             <p>
-                                                On here you can display markers on the map for departure points in your area and for 
+                                                On here you can display markers on the map for departure points in your area and/or 
                                                 all hospitals area across Tyne & Wear.
-                                            </p>
-                                            <p>
-                                                Click the check box below to display markers for all places across Tyne & Wear.
                                             </p>
                                         </div>
                                     
@@ -245,19 +247,21 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                        <div id="buttons-markers">
+
+                                        <div class="buttons-markers">
                                             <div class="row">
                                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                                     <!-- 'SHOW MARKERS' BUTTON -->
                                                     <button id="show-markers" class="btn btn-default btn-success" onclick="createMarkers();" type="submit">Show Markers</button>
                                                 </div>
                                             </div>    
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                    <!-- 'CLEAR MAP' BUTTON -->
+                                                    <button class="btn btn-default btn-warning clear-map-btn" onclick="getAreaCentre();" type="submit">Clear Map</button>
+                                                </div>    
+                                            </div>
                                         </div>    
-                                        <h3>Start again?</h3>
-                                        <p>
-                                            Click <a id="home-menu-icon" href="index.html"><i class="fas fa-home" aria-hidden="true"></i></a>to reset the map.
-                                        </p>
                                     </div>    
                                 </div>    
                             </div>

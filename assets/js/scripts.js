@@ -316,6 +316,7 @@ function getAreaCentre() {
             });        
 
             // Populate the departure point dropdown list on the Routes tab.
+            htmlText = "";   
             for (j in myDepartureObj.areaCenters[i].departurePoints) {
                 htmlText += "<option>" + myDepartureObj.areaCenters[i].departurePoints[j].departurePointName + "</option>"; 
             };
@@ -409,13 +410,13 @@ function createMarkers() {
 
     // Marker labels.
     var labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
+    var locations;
     var iconColourURL = "";
     
-    var locations = [];
 
     // If departures checkbox is checked, get co-ordinates for all departure points in the selected area.
     if ($("#departures-checkbox").prop("checked")) {
+        locations = [];
         iconColorURL = "https://maps.google.com/mapfiles/ms/icons/red.png";
         for (i in myDepartureObj.areaCenters) {
             if (departureArea == myDepartureObj.areaCenters[i].area) {
@@ -432,6 +433,7 @@ function createMarkers() {
 
     // If hospital checkbox is checked, get co-ordinates for all hospitals across Tyne & Wear.
     if ($("#hospitals-checkbox").prop("checked")) {
+        locations = [];
         iconColorURL = "https://maps.google.com/mapfiles/ms/icons/blue.png";
         for (i in myDestinationObj.destinationHospitals) {
                 latDH = myDestinationObj.destinationHospitals[i].latlng[0];
