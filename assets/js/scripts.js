@@ -445,7 +445,6 @@ function createMarkers() {
         return new google.maps.Marker({
             position: location,
             label: labels[i % labels.length],
-            title: "High Street",               // Can I get this from "locations[]" array?
             icon: {
                 url: iconColorURL,              // Use red icon for Departures, blue for Hospitals.
                 scaledSize: new google.maps.Size(50, 50),
