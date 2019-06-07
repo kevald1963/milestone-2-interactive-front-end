@@ -413,7 +413,6 @@ function createMarkers() {
     var locations;
     var iconColourURL = "";
     
-
     // If departures checkbox is checked, get co-ordinates for all departure points in the selected area.
     if ($("#departures-checkbox").prop("checked")) {
         locations = [];
@@ -424,7 +423,6 @@ function createMarkers() {
                     latDP = myDepartureObj.areaCenters[i].departurePoints[j].latlng[0];
                     lngDP = myDepartureObj.areaCenters[i].departurePoints[j].latlng[1];
                     locationName = myDepartureObj.areaCenters[i].departurePoints[j].departurePointName;
-                    console.log("locationName = " + locationName);
                     locations[j] = {lat: latDP, lng: lngDP, locName: locationName};
                 };
             };
@@ -439,12 +437,10 @@ function createMarkers() {
                 latDH = myDestinationObj.destinationHospitals[i].latlng[0];
                 lngDH = myDestinationObj.destinationHospitals[i].latlng[1];
                 hospitalName = myDestinationObj.destinationHospitals[i].hospital;
-                console.log("hospital name = " + hospitalName);
                 locations[i] = {lat: latDH, lng: lngDH, hosName: hospitalName};
         };
     };
 
-    // Create the markers.
     var markers = locations.map(function(location, i) {
         return new google.maps.Marker({
             position: location,
@@ -461,5 +457,5 @@ function createMarkers() {
     // Add a marker clusterer to manage the markers.
     var markerCluster = new MarkerClusterer(map, markers,
         {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-        
+    
 };
