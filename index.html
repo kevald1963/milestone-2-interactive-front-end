@@ -49,7 +49,7 @@
                </ul>
             
                 <!-- DEPARTURE AREAS -->
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav">
                     <li class="dropdown">
                         <a id="departure-menu" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-atlas hidden-xs" aria-hidden="true"></i>
@@ -75,20 +75,6 @@
     <main class="container-fluid">
         <section>
             <div class="row">
-                <!-- 
-                Note a map image is shown initially but is toggled programmatically with an interactive Google map showing the 
-                departure area, once the area has been selected. A 'departure area' is one of the five Tyne & Wear boroughs.
-                Note that the Google Maps API doesn't currently (as of 05/2019) have any means available to show county boundaries.
-                For this reason, an image of the county of Tyne & Wear, with boundaries, is shown initially.
-                -->
-                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                    <!-- Display Google map image of Tyne & Wear with boundaries. -->
-                    <div id="county-map">
-                        <img class="county-map-image" src="assets/images/tyne_and_wear_map.jpg" alt="Google Maps image of Tyne and Wear showing county boundaries.">
-                    </div>
-                    <!-- Display Interactive Google map of departure area. -->
-                    <div id="map-canvas"></div>
-                </div>
 
                 <!-- USER CONTROL PANEL -->
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -278,6 +264,24 @@
                         </div>
                     </div>
                 </div>
+                <!-- /.USER CONTROL PANEL -->
+                
+                <!-- MAP PANEL -->
+                <!-- Note a map IMAGE is shown on initialisation of App. The image is replaced with an interactive Google map showing 
+                     the Departure Area, once it has been selected. A 'Departure Area' is one of the five Tyne & Wear boroughs. Google
+                     Maps API doesn't currently (as of 06/2019) expose any means to show county boundaries on interactive maps. For this
+                     reason, an image of the county of Tyne & Wear, with boundaries, is shown initially.
+                -->
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                    <!-- Display Google map image of Tyne & Wear with boundaries. -->
+                    <div id="county-map">
+                        <img class="county-map-image" src="assets/images/tyne_and_wear_map.jpg" alt="Google Maps image of Tyne and Wear showing county boundaries.">
+                    </div>
+                    <!-- Display Interactive Google map of departure area. -->
+                    <div id="map-canvas"></div>
+                </div>
+                <!-- /.MAP PANEL -->
+
             </div>
         </section>
     </main>
