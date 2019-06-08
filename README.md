@@ -1,58 +1,62 @@
-# Tyneside Hospital Route Finder App 
+# Tyne & Wear Hospital Route Finder App 
 
 ## Introduction
 
-This project finds and displays interactive routes maps between main population areas and local hospitals in the Tyne & Wear, England, UK, for various modes of transport using Google Maps. Public transport timetable information is also provided, in text format, to accompany the visual map routes, when this mode of transport is selected. It also provides the facility to display map markers for various points of interest such as Metro stations, bus stations, Ferry terminals and hospitals.
+### What it does
+This App finds and displays
+- routes on an interactive Google Map between the five boroughs of Tyne & Wear and the local hospitals serving them. Routes can be displayed for four modes of travel i.e. public transport, walking, cycling and driving.
+- map markers for various hubs, departure points and destinations such as Metro stations, rail stations, bus stations, Ferry terminals and hospitals.
+
+### Operation
+The App is based on a single page but its content is dynamically changed according to various selections made by the user. On initialisation the user is presented with an image of a Google map of Tyne & Wear, showing its boundary (it was not possible to show the boundary on an interactive Google Map because the Google Maps API does not expose the means to do so.) On initialisation, the Info tab gives information on what the App does and how to get started. The Routes and Markers tabs are disabled at this stage. The user must first select the borough from which they wish to travel (referred to as the Departure Area in the App) from the Departure Area menu. Once this is done, an interactive map of the Departure Area is displayed centered on the approximate geographical centre of the borough. The Routes and Markers tabs are also enabled, with the Routes tab made active. Users can then use the dropdown and checkbox controls, within these tabs, to display both routes and markers. The App can be reset at any time by the user to its initial state. The map can also be cleared of rendered routes and markers from buttons within the respective tabs.
 
 ### Aims For This Release
 
 The aims of the release are:
-- to provide visual route information to people in Tyneside wishing to travel from it major population areas to any of the hospitals that serve the county.
+- to provide visual route information to people in Tyne & Wear wishing to travel from its major population areas to any of the hospitals that serve the county.
 - separately display Metro, train, ferry and bus stations using markers, with clustering of markers where appropriate.
-- provide timetable information in text format corresponding to public transport services on any routes displayed.
 
 ## UX
  
 ### Website Audience
 
-This consists of public transport users, cyclists, pedestrians and drivers wishing to travel to and from hospitals in and around Tyne & Wear.
+The App is mainly aimed at public transport users wishing to travel to hospitals in Tyne & Wear. However other forms of travel such as by bicycle, walking and driving can also be selected within the App.
 
 ### User Stories
 
-User stories to be catered for in this release:
+User stories to be catered for in this release: 
+- As a user, I want to display a route on a map so that I can find my way to any hospital in Tyne & Wear.
+
+- As a user, I want to display multiple routes on a map so that I can compare routes to a number of different hospitals I may wish to travel to.
+
+- As a user, I want to be able to specify the modes of transport that I wish to use on my journey to hospital.
+
+- As a user, I want to display markers on a map so that I can see the locations of various places that are important to me for planning my journey to hospital.
 
 ### Layouts
 
-The files shown below are stored in the __Project Documentation_ folder in the GitHub repository. The layout diagrams show both wide screen and mobile layouts.
+The files below are stored in the [_Project Documentation](https://github.com/kevald1963/milestone-2-interactive-front-end/tree/master/_Project%20Documentation) folder in the GitHub repository.
 
-- South Tyneside local group page layouts.jpg
-- Google Map page layouts.jpg
+- Layout (1st draft), Home page, wide screen.jpg
+- Layout, with county or borough map, wide screen.jpg
+- Layout, with county or borough map, narrow screen.jpg
 
 ## Features
 
-### Pages implemented and styled:
-
-- South Tyneside group page
-- Google Map page
-- Email validation
-
 ### Existing Features
 
-- All pages:
-    - A comprehensive Bootstrap menu that collapses into a hamburger icon when screen size is less that 768px.
-    - A footer showing summary About info, an email link and social media links.
-
-- southtyneside.html (? check filename correct!) :
-    - Displays tooltip text for the Google Maps image of the borough with its boundaries. On hovering, the text informs users that clicking on the image will navigate them to a larger interactive map.
+- A simple Bootstrap menu that collapses into a hamburger icon when screen size is less that 768px.
+- An interactive Google Map.
+- An Info tab providing information on what the app does and how to get started.
+- A Routes tab that allows user to select a Departure Point and a Destination Hospital in order to display routes between them on the map.
+- A Markers tab that allows user to select all Departure Points and/or all Destination Hospitals, within the entire county of Tyne & Wear, in order to mark them on the map.
+- A means of resetting the App to its initial state i.e. by clicking the Home page menu.
+- A means of resetting the Google map to its initial state i.e. clearing routes and markers using buttons.
 
 ### Features Left to Implement
-
-- Fully develop content and layout for pages currently displayed as Under Construction (referenced above).
-- Validation of email forms, particularly to check the first email address matches the confirmation email.
-- Get the site to send real emails to a test email account.
-- Use JavaScript (or some other language) to send the media link to video and audio modals, so that only one code instance of each is required in a page.
-I don't know how to do this currently, so individual blocks of HTML have to copied and modified for every video or audio file that is shown in the news panel. This could make the HTML very cumbersome and slow to load.
-- Find a way to create just one instance of a common element, such as the navigation menu or footer (which can then be 'called' into each page as required) so it can be maintained in just one place. This especially important on big sites because no-one wants to, for example, to insert (and test!) a new menu dropdown item for each page on a large site. From my searches online, I understand this can be achieved using either server side includes or a programming language.
+- Provide a means to the user of removing the most recently displayed route from the map.
+- Provide a means to the user of removing the most recently displayed marker from the map.
+- Provide timetables, journey times, alternative routes and other information, in textual format, for displayed routes where public transport is featured. (An attempt was made to implement this in the current release but hit technical problems with Cross-origin Resource Sharing (CORS) when requesting data from Google Maps Platform web services. This will need further investigation at a later date, as it was proving too time-consuming to find a solution and complete the current release within a reasonable timescale.)
 
 ## Technologies Used
 
@@ -63,52 +67,47 @@ I don't know how to do this currently, so individual blocks of HTML have to copi
   - To style page structure and content.
 
 - [Bootstrap 3.3.7](https://getbootstrap.com/docs/3.3/getting-started/)
-  - To provide template components to easily create and style responsive elements like the navigation menu, buttons, banners, etc.
+  - To provide template components to easily create and style responsive elements like the navigation menu, buttons, etc.
 
 - [Google Fonts](https://fonts.google.com/)
-  - For 'Roboto' font style used on all pages.
+  - For 'Roboto' font style used.
 
 - [Font Awesome 5](https://fontawesome.com/icons?d=gallery)
   - Used to create 'icon' characters for menus, video and audio links, social media, external links, etc.
 
 - [JQuery](https://jquery.com)
-  - Used to simplify DOM manipulation ???
+  - Used to simplify DOM manipulation.
 
 - [JavaScript](https://www.w3schools.com/js/js_versions.asp) added to:
-  - implement Google maps object to allow the following functionality
-  
+  - to make the HTML content dynamic in response to user selections.
+  - to create and interrogate a local data object for holding all relevant geographical data for use in displaying routes and markers.
+  - to implement the Google Maps API functionality as below.
+
+- [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/tutorial)
+  - Computing and displaying routes and markers on a Google Map
+ 
 ## Testing
 
-- Excel workbook,'Test plan - TWPTUG redesign', stored in the __Project Documentation_ folder in the GitHub repository, details all the functional and responsiveness tests carried out across several popular browsers.
-
-- As the site gets bigger I will definitely need to create some automated test scripts, because manual testing will just get too slow and tedious to carry out. I did consider doing it for this particular phase of 
-  development, using a product, based on Selenium IDE, called Katalon Recorder but, after a bit of experimentation, I found it was not sophisticated enough to capture page and window identifying information without 
-  writing some programming code in its sister product Katalon Studio. This is too much of a learning curve for me at this point in time.
+- Excel workbook,'Test plan - Tyne & Wear Hospital Finder', stored in the __Project Documentation_ folder in the GitHub repository, details all the functional and responsiveness tests carried out across several popular browsers.
 
 ## Deployment
-- The Project is deployed on GitHub Pages, using the default settings. Click [here](https://kevald1963.github.io/milestone-1-twptug-redesign/) to view.
+- The project is deployed on GitHub Pages, using the default settings. Click [here](https://kevald1963.github.io/2-interactive-front-end/) to view.
+- A master branch only has been created for the project.
+- There are no differences between the deployed version and the development version on [Cloud9](https://ide.c9.io/kevald1963/milestone-2-interactive-front-end).
 
 ## Credits
 
+"Harnessing the Google Maps JavaScript API the Right Way"
+June 01, 2016 By Jamie Shields
+https://www.sitepoint.com/google-maps-javascript-api-the-right-way/
+
 ### Content
-- The text for the Welcome sections on the Group pages was copied from the TWPTUG 2018 Annual Report, and edited to suit.
-- The text for the About page comes from a combination of the About and Partner pages on the live TWPTUG website.
-- The News panel articles on the Home and Group pages are replicated from the the live TWPTUG website.
+- The text throughout the project was written by myself.
 
 ### Media
-- The images used in this site were obtained from 
-    - [Pixabay](https://pixabay.com/en/). These are the large images on the Group pages, except for South Shields and Sunderland.
-    - Existing TWPTUG resources, mostly photos taken by activists. These are the images on the About page.
-    - [Reinventing Transport](https://www.reinventingtransport.org/) logo, shared under a Creative Commons licence. Logo is used in the audio modal as a link to the RT website. A link to the CC licence (which must be shown) is provided in the footer of the modal.
-    - The large images on the South Shields and Sunderland group pages were licensed by TWPTUG from John R. Short, author of Facebook page [See Tyne and Wear Differently](https://www.facebook.com/ctynewear/).
-- The embedded video file is from [Parliament TV](https://www.parliamentlive.tv)
-- The embedded audio file is from Reinventing Transport (above)
-
-### Code Snippets
-- to pause modal video/audio playback when modal widow is closed is credited to user3376436 on Stack Overflow at https://stackoverflow.com/questions/5958132/javascript-to-stop-html5-video-playback-on-modal-window-close
-- to allow user to return back to previous page credited to W3 Schools at https://www.w3schools.com/jsref/met_his_back.asp
-- to clear modal email forms is credited to user3127109 on Stack Overflow at https://stackoverflow.com/questions/15827262/how-to-reset-form-body-in-bootstrap-modal-box
+The App uses just one image, a map of Tyne & Wear showing its boundary, obtained from 
+    - [Google Maps](https://www.google.com/maps). Google's copyright is displayed on map.
 
 ### Acknowledgements
 
-- I received inspiration for this project from Paul Baker and Vicki Glbert who work tirelessly on behalf of TWPTUG. Many thanks also to my mentor, Chris Zielinski, for his expertise advice and guidance, particularly on responsivity. Also thanks to Slack regulars 'Jo Wings' and 'Eventyret_mentor' for sorting out my mistakes and misunderstandings.
+- I received inspiration for this project from Wendy Gascoigne and Michael Charlton of South Tyneside Public Transport Users Group who have actively campaigned for better public transport information for people in South Tyneside travelling to hospital. A big Thank You is also due to my hard-working mentor, Chris Zielinski, for his patience and help in keeping this project on track and within the project criteria.
