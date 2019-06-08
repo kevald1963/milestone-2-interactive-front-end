@@ -37,28 +37,32 @@ myDepartureObj = {
             "latlng":[54.984429, -1.618050],
             "departurePoints": [
                 {
+                    "departurePointName":"Central Station",
+                    "latlng":[54.969129, -1.616994]
+                },
+                {
                     "departurePointName":"Eldon Square Bus Station",
                     "latlng":[54.975914, -1.615974]
                 },
                 {
-                    "departurePointName":"Monument Metro Station",
-                    "latlng":[54.973984, -1.61294]
-                },
-                {
-                    "departurePointName":"Manors Metro Station",
-                    "latlng":[54.974010, -1.604777]
-                },
-                {
-                    "departurePointName":"St James' Metro Station",
-                    "latlng":[54.974207, -1.620998]
+                    "departurePointName":"Gosforth High Street",
+                    "latlng":[55.005029, -1.620197]
                 },
                 {
                     "departurePointName":"Haymarket Interchange",
                     "latlng":[54.977307, -1.614433]
                 },
                 {
-                    "departurePointName":"Gosforth High Street",
-                    "latlng":[55.005029, -1.620197]
+                    "departurePointName":"Manors Metro Station",
+                    "latlng":[54.974010, -1.604777]
+                },
+                {
+                    "departurePointName":"Monument Metro Station",
+                    "latlng":[54.973984, -1.61294]
+                },
+                {
+                    "departurePointName":"St James' Metro Station",
+                    "latlng":[54.974207, -1.620998]
                 }
             ]
         },
@@ -67,28 +71,36 @@ myDepartureObj = {
             "latlng":[55.028626, -1.521937],
             "departurePoints": [
                 {
+                    "departurePointName":"Cullercoats Metro Station",
+                    "latlng":[55.035060, -1.436182]
+                },
+                {
                     "departurePointName":"Four Lane Ends Interchange",
                     "latlng":[55.010142, -1.578631]
+                },
+                {
+                    "departurePointName":"Monkseaton Metro Station",
+                    "latlng":[55.042389, -1.458080]
+                },
+                {
+                    "departurePointName":"North Shields Ferry Landing",
+                    "latlng":[55.003621, -1.444665]
+                },
+                {
+                    "departurePointName":"Tynemouth Metro Station",
+                    "latlng":[55.017287, -1.428012]
                 },
                 {
                     "departurePointName":"Wallsend High Street",
                     "latlng":[54.992070, -1.527093]
                 },
                 {
-                    "departurePointName":"Whitley Road",
-                    "latlng":[55.042225, -1.445165]
-                },
-                {
                     "departurePointName":"Whitley Bay Metro Station",
                     "latlng":[55.040214, -1.442819]
                 },
                 {
-                    "departurePointName":"Cullercoats Metro Station",
-                    "latlng":[55.035060, -1.436182]
-                },
-                {
-                    "departurePointName":"Tynemouth Metro Station",
-                    "latlng":[55.017287, -1.428012]
+                    "departurePointName":"Whitley Road",
+                    "latlng":[55.042225, -1.445165]
                 }
             ]
         },
@@ -96,6 +108,14 @@ myDepartureObj = {
             "area":"Gateshead",
             "latlng":[54.936093, -1.676706],
             "departurePoints": [
+                {
+                    "departurePointName":"Blaydon Bus Station",
+                    "latlng":[54.965027, -1.713570]
+                },
+                {
+                    "departurePointName":"Felling Metro Station",
+                    "latlng":[54.953165, -1.571774]
+                },
                 {
                     "departurePointName":"Gateshead Interchange",
                     "latlng":[54.961955, -1.604486]
@@ -105,16 +125,12 @@ myDepartureObj = {
                     "latlng":[54.958589, -1.665397]
                 },
                 {
-                    "departurePointName":"Heworth Interchange",
-                    "latlng":[54.951814, -1.555921]
-                },
-                {
                     "departurePointName":"Gateshead Stadium Metro",
                     "latlng":[54.957770, -1.588465]
                 },
                 {
-                    "departurePointName":"Blaydon Bus Station",
-                    "latlng":[54.965027, -1.713570]
+                    "departurePointName":"Heworth Interchange",
+                    "latlng":[54.951814, -1.555921]
                 }
             ]
         },
@@ -123,20 +139,12 @@ myDepartureObj = {
             "latlng":[54.967314, -1.437396],
             "departurePoints": [
                 {
-                    "departurePointName":"Hebburn Station Road",
-                    "latlng":[54.973473, -1.518303]
-                },
-                {
-                    "departurePointName":"Jarrow Bus Station",
-                    "latlng":[54.979757, -1.491899]
-                },
-                {
-                    "departurePointName":"South Shields Interchange",
-                    "latlng":[54.998236, -1.433126]
-                },
-                {
                     "departurePointName":"Boldon ASDA, Henley Way",
                     "latlng":[54.948666, -1.464431]
+                },
+                {
+                    "departurePointName":"Cleadon, Britannia Inn",
+                    "latlng":[54.954574, -1.400603]
                 },
                 {
                     "departurePointName":"East Boldon, Addison Road",
@@ -147,8 +155,20 @@ myDepartureObj = {
                     "latlng":[54.945710, -1.438443]
                 },
                 {
-                    "departurePointName":"Cleadon, Britannia Inn",
-                    "latlng":[54.954574, -1.400603]
+                    "departurePointName":"Hebburn Station Road",
+                    "latlng":[54.973473, -1.518303]
+                },
+                {
+                    "departurePointName":"Jarrow Bus Station",
+                    "latlng":[54.979757, -1.491899]
+                },
+                {
+                    "departurePointName":"South Shields Ferry Landing",
+                    "latlng":[54.997118, -1.438963]
+                },
+                {
+                    "departurePointName":"South Shields Interchange",
+                    "latlng":[54.998236, -1.433126]
                 },
                 {
                     "departurePointName":"Whitburn",
@@ -161,16 +181,20 @@ myDepartureObj = {
             "latlng":[54.879431, -1.430500],
             "departurePoints": [
                 {
+                    "departurePointName":"Houghton-le-Spring, Newbottle St",
+                    "latlng":[54.844775, -1.471897]
+                },
+                {
+                    "departurePointName":"Roker, Roker Hotel",
+                    "latlng":[54.923974, -1.366047]
+                },
+                {
                     "departurePointName":"Seaburn Metro Station",
                     "latlng":[54.929243, -1.386268]
                 },
                 {
                     "departurePointName":"Seaburn, Morrisons",
                     "latlng":[54.936964, -1.368861]
-                },
-                {
-                    "departurePointName":"Roker, Roker Hotel",
-                    "latlng":[54.923974, -1.366047]
                 },
                 {
                     "departurePointName":"Stadium of Light Metro",
@@ -181,16 +205,12 @@ myDepartureObj = {
                     "latlng":[54.911061, -1.383770]
                 },
                 {
-                    "departurePointName":"Washington Galleries Bus Station",
-                    "latlng":[54.899282, -1.533903]
-                },
-                {
-                    "departurePointName":"Houghton-le-Spring, Newbottle St",
-                    "latlng":[54.844775, -1.471897]
-                },
-                {
                     "departurePointName":"Sunderland Interchange",
                     "latlng":[54.902297, -1.384927]
+                },
+                {
+                    "departurePointName":"Washington Galleries Bus Station",
+                    "latlng":[54.899282, -1.533903]
                 }
             ]
         }
@@ -204,13 +224,13 @@ myDestinationObj = {
     "destinationHospitals": [
         {
             "area":"Newcastle",
-            "hospital":"Newcastle RVI",
-            "latlng":[54.980218, -1.619055]
+            "hospital":"Newcastle Freeman",
+            "latlng":[55.002584, -1.593379]
         },
         {
             "area":"Newcastle",
-            "hospital":"Newcastle Freeman",
-            "latlng":[55.002584, -1.593379]
+            "hospital":"Newcastle RVI",
+            "latlng":[54.980218, -1.619055]
         },
         {
             "area":"North Tyneside",
@@ -406,55 +426,65 @@ function calculateAndDisplayRoute() {
 // Function called from: 'Show Markers' button
 function createMarkers() {
 
-    var mapMarkers;
-
     // Marker labels.
     var labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    var locations;
-    var iconColourURL = "";
-    
+    var locationsDepartures = [], locationsHospitals  = [];
+
     // If departures checkbox is checked, get co-ordinates for all departure points in the selected area.
-    if ($("#departures-checkbox").prop("checked")) {
-        locations = [];
-        iconColorURL = "https://maps.google.com/mapfiles/ms/icons/red.png";
+    if ($("#departures-checkbox").prop("checked") == true) {
+        locationsDepartures = [];
         for (i in myDepartureObj.areaCenters) {
             if (departureArea == myDepartureObj.areaCenters[i].area) {
                 for (j in myDepartureObj.areaCenters[i].departurePoints) {
                     latDP = myDepartureObj.areaCenters[i].departurePoints[j].latlng[0];
                     lngDP = myDepartureObj.areaCenters[i].departurePoints[j].latlng[1];
                     locationName = myDepartureObj.areaCenters[i].departurePoints[j].departurePointName;
-                    locations[j] = {lat: latDP, lng: lngDP, locName: locationName};
+                    locationsDepartures[j] = {lat: latDP, lng: lngDP, locName: locationName};
                 };
             };
         };
+        var markersDepartures = locationsDepartures.map(function(location, i) {
+            return new google.maps.Marker({
+                position: location,
+                label: labels[i % labels.length],
+                icon: {
+                    url: "https://maps.google.com/mapfiles/ms/icons/red.png",
+                    scaledSize: new google.maps.Size(50, 50),
+                    labelOrigin: new google.maps.Point(25, 18)
+                }    
+            });
+        });
+        var markerCluster = new MarkerClusterer(map, markersDepartures,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
     };
-
+    
     // If hospital checkbox is checked, get co-ordinates for all hospitals across Tyne & Wear.
-    if ($("#hospitals-checkbox").prop("checked")) {
-        locations = [];
-        iconColorURL = "https://maps.google.com/mapfiles/ms/icons/blue.png";
+    if ($("#hospitals-checkbox").prop("checked") == true) {
+        locationsHospitals = [];
         for (i in myDestinationObj.destinationHospitals) {
                 latDH = myDestinationObj.destinationHospitals[i].latlng[0];
                 lngDH = myDestinationObj.destinationHospitals[i].latlng[1];
                 hospitalName = myDestinationObj.destinationHospitals[i].hospital;
-                locations[i] = {lat: latDH, lng: lngDH, hosName: hospitalName};
+                locationsHospitals[i] = {lat: latDH, lng: lngDH, hosName: hospitalName};
         };
+        var markersHospitals = locationsHospitals.map(function(location, i) {
+            return new google.maps.Marker({
+                position: location,
+                label: labels[i % labels.length],
+                icon: {
+                    url: "https://maps.google.com/mapfiles/ms/icons/blue.png",
+                    scaledSize: new google.maps.Size(50, 50),
+                    labelOrigin: new google.maps.Point(25, 18)
+                }    
+            });
+        });
+        // Add a marker clusterer to manage the markers.
+        var markerCluster = new MarkerClusterer(map, markersHospitals,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+    };
+    
+    if (($("#departures-checkbox").prop("checked") == false) && ($("#hospitals-checkbox").prop("checked") == false)) {
+        alert("At least one checkbox must be checked to display markers.");
     };
 
-    var markers = locations.map(function(location, i) {
-        return new google.maps.Marker({
-            position: location,
-            label: labels[i % labels.length],
-            icon: {
-                url: iconColorURL,              // Use red icon for Departures, blue for Hospitals.
-                scaledSize: new google.maps.Size(50, 50),
-                labelOrigin: new google.maps.Point(25, 18)
-            }    
-        });
-    });
-
-    // Add a marker clusterer to manage the markers.
-    var markerCluster = new MarkerClusterer(map, markers,
-        {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-    
 };
