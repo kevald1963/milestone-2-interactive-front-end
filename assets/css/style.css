@@ -12,7 +12,7 @@ ul {
     list-style: disc;
 }
 
-/* Pull Home button in to align with left-hand side of screen.
+/* Pull Home button in, to align with left-hand side of screen.*/
 .navbar-collapse {
     padding-left: 0;
 }
