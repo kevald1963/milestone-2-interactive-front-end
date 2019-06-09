@@ -84,16 +84,15 @@ The files below are stored in the [_Project Documentation](https://github.com/ke
   - to implement the Google Maps API functionality as below.
 
 - [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/tutorial)
-  - Computing and displaying routes and markers on a Google Map
- 
-## Testing
+  - Computing and displaying routes and markers on a Google Map.
 
-- Excel workbook,'Test plan - Tyne & Wear Hospital Finder', stored in the __Project Documentation_ folder in the GitHub repository, details all the functional and responsiveness tests carried out across several popular browsers.
+## Testing
+- Excel workbook,'Test plan - Tyne & Wear Hospital Finder', stored in the [_Project Documentation](https://github.com/kevald1963/milestone-2-interactive-front-end/tree/master/_Project%20Documentation/Test%20plan) folder in the GitHub repository, details all the functional and responsiveness tests carried out across several popular browsers.
 
 ## Deployment
-- The project is deployed on GitHub Pages, using the default settings. Click [here](https://kevald1963.github.io/2-interactive-front-end/) to view.
+- The project is deployed on GitHub Pages, using the default settings at [https://kevald1963.github.io/milestone-2-interactive-front-end/](https://kevald1963.github.io/milestone-2-interactive-front-end/). The Google Maps API key has been enabled for this URL.
 - A master branch only has been created for the project.
-- There are no differences between the deployed version and the development version on [Cloud9](https://ide.c9.io/kevald1963/milestone-2-interactive-front-end).
+- There are no differences between the deployed version and the development version on Cloud9 at [https://ide.c9.io/kevald1963/milestone-2-interactive-front-end](https://ide.c9.io/kevald1963/milestone-2-interactive-front-end).
 
 ## Credits
 
